@@ -91,8 +91,8 @@ export function Header() {
               <Image
                 src="/assets/carters-logo.png"
                 alt="Carters Care"
-                width={200}
-                height={85}
+                width={360}
+                height={153}
                 className="transition-transform duration-300 group-hover:scale-105"
                 priority
               />
