@@ -8,7 +8,23 @@ import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { ArrowRight, Heart, Users, Award, Shield, Star, CheckCircle2 } from 'lucide-react'
 
-const aboutData: Record<string, any> = {
+interface AboutConfig {
+  title: string
+  subtitle: string
+  heroImage: string
+  image2: string
+  image3: string
+  accent: string
+  accentLight: string
+  gradientCss: string
+  values: Array<{
+    icon: React.ComponentType<{ size?: number; className?: string }>
+    title: string
+    desc: string
+  }>
+}
+
+const aboutData: Record<string, AboutConfig> = {
   ndis: {
     title: 'About Carters Care\nNDIS Services',
     subtitle: 'Empowering participants to live their best lives with dignity, choice, and genuine support.',
@@ -72,7 +88,17 @@ const fadeUp = {
   transition: { duration: 0.65, ease: [0.22, 1, 0.36, 1] as const },
 }
 
-function FloatingShape({ size, x, y, delay, color, blur = 80, opacity = 0.15 }: any) {
+interface FloatingShapeProps {
+  size: number
+  x: string
+  y: string
+  delay: number
+  color: string
+  blur?: number
+  opacity?: number
+}
+
+function FloatingShape({ size, x, y, delay, color, blur = 80, opacity = 0.15 }: FloatingShapeProps) {
   return (
     <motion.div
       animate={{ y: [0, -20, 0], x: [0, 10, 0] }}
@@ -207,7 +233,7 @@ export default function About() {
             </motion.div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {data.values.map((v: any, i: number) => {
+              {data.values.map((v, i: number) => {
                 const Icon = v.icon
                 return (
                   <motion.div

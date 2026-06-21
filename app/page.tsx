@@ -22,8 +22,30 @@ import {
   Award,
 } from 'lucide-react'
 
+// ── Types ────────────────────────────────────────────────────────────────
+interface SkinConfig {
+  heroTitle: string
+  heroText: string
+  heroImage: string
+  splitImage: string
+  aboutImage: string
+  cta: string
+  services: Array<{
+    title: string
+    desc: string
+    icon: React.ComponentType<{ size?: number; className?: string }>
+  }>
+  quote: string
+  checks: string[]
+  accent: string
+  accentLight: string
+  gradientCss: string
+  overlayColor: string
+  marqueeBg: string
+}
+
 // ── Skin data ──────────────────────────────────────────────────────────────
-const skinData: Record<string, any> = {
+const skinData: Record<string, SkinConfig> = {
   ndis: {
     heroTitle: 'Your NDIS Journey,\nSupported Every Step',
     heroText: 'Personalised disability support services that put you in control — from daily living to community participation.',
@@ -102,7 +124,17 @@ const stagger = (i: number) => ({
 })
 
 // ── Floating blur blob ────────────────────────────────────────────────────
-function FloatingShape({ size, x, y, delay, color, blur = 80, opacity = 0.18 }: any) {
+interface FloatingShapeProps {
+  size: number
+  x: string
+  y: string
+  delay: number
+  color: string
+  blur?: number
+  opacity?: number
+}
+
+function FloatingShape({ size, x, y, delay, color, blur = 80, opacity = 0.18 }: FloatingShapeProps) {
   return (
     <motion.div
       animate={{ y: [0, -22, 0], x: [0, 12, 0], rotate: [0, 6, 0] }}
@@ -114,10 +146,17 @@ function FloatingShape({ size, x, y, delay, color, blur = 80, opacity = 0.18 }: 
 }
 
 // ── Animated SVG swirl decoration ────────────────────────────────────────
-function Swirl({ color, opacity, rotate, scale, x, y, delay }: {
-  color: string; opacity: number; rotate: number; scale: number
-  x: string; y: string; delay: number
-}) {
+interface SwirlProps {
+  color: string
+  opacity: number
+  rotate: number
+  scale: number
+  x: string
+  y: string
+  delay: number
+}
+
+function Swirl({ color, opacity, rotate, scale, x, y, delay }: SwirlProps) {
   return (
     <motion.div
       className="absolute pointer-events-none select-none"
@@ -145,7 +184,12 @@ function Swirl({ color, opacity, rotate, scale, x, y, delay }: {
 }
 
 // ── Scrolling marquee strip ───────────────────────────────────────────────
-function Marquee({ color, items }: { color: string; items: string[] }) {
+interface MarqueeProps {
+  color: string
+  items: string[]
+}
+
+function Marquee({ color, items }: MarqueeProps) {
   const doubled = [...items, ...items]
   return (
     <div className="overflow-hidden py-4" style={{ background: color }}>
@@ -166,7 +210,11 @@ function Marquee({ color, items }: { color: string; items: string[] }) {
 }
 
 // ── Parallax Hero (isolated so useScroll ref is always hydrated) ──────────
-function ParallaxHero({ data }: { data: any }) {
+interface ParallexHeroProps {
+  data: SkinConfig
+}
+
+function ParallaxHero({ data }: ParallexHeroProps) {
   const heroRef = useRef<HTMLElement>(null)
   const { scrollYProgress } = useScroll({ target: heroRef, offset: ['start start', 'end start'] })
   const imgY = useTransform(scrollYProgress, [0, 1], ['0%', '20%'])
@@ -321,7 +369,7 @@ export default function Home() {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {data.services.map((s: any, i: number) => {
+              {data.services.map((s, i: number) => {
                 const Icon = s.icon
                 return (
                   <motion.div

@@ -20,7 +20,25 @@ import {
 } from 'lucide-react'
 import { useState } from 'react'
 
-const servicesData: Record<string, any> = {
+interface ServiceItem {
+  icon: React.ComponentType<{ size?: number; className?: string }>
+  title: string
+  desc: string
+  detail: string
+}
+
+interface ServicesConfig {
+  title: string
+  subtitle: string
+  heroImage: string
+  splitImages: string[]
+  services: ServiceItem[]
+  accent: string
+  accentLight: string
+  gradientCss: string
+}
+
+const servicesData: Record<string, ServicesConfig> = {
   ndis: {
     title: 'NDIS Support\nServices',
     subtitle: 'Comprehensive support services tailored to your NDIS plan and personal goals.',
@@ -81,7 +99,17 @@ const fadeUp = {
   transition: { duration: 0.65, ease: [0.22, 1, 0.36, 1] as const },
 }
 
-function FloatingShape({ size, x, y, delay, color, blur = 80, opacity = 0.15 }: any) {
+interface FloatingShapeProps {
+  size: number
+  x: string
+  y: string
+  delay: number
+  color: string
+  blur?: number
+  opacity?: number
+}
+
+function FloatingShape({ size, x, y, delay, color, blur = 80, opacity = 0.15 }: FloatingShapeProps) {
   return (
     <motion.div
       animate={{ y: [0, -20, 0], x: [0, 10, 0] }}
@@ -159,7 +187,7 @@ export default function Services() {
             </motion.div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {data.services.map((s: any, i: number) => {
+              {data.services.map((s, i: number) => {
                 const Icon = s.icon
                 const isOpen = expanded === s.title
                 return (

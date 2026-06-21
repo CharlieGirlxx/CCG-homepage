@@ -46,14 +46,13 @@ export function Footer() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
           {/* Brand */}
-          <div className="md:col-span-2">
+          <section className="md:col-span-2" aria-labelledby="brand-title">
             {/* Logo: colourful pinwheel icon cropped from full logo + white wordmark text */}
             <div className="flex items-center gap-3 mb-5">
               <div className="w-12 h-12 rounded-xl overflow-hidden shrink-0" style={{ background: '#0f0f14' }}>
                 <Image
                   src="/assets/carters-logo.png"
-                  alt=""
-                  aria-hidden="true"
+                  alt="Carters Care Group logo"
                   width={100}
                   height={56}
                   className="h-12 w-auto max-w-none -translate-x-1"
@@ -61,7 +60,7 @@ export function Footer() {
                 />
               </div>
               <div className="leading-none">
-                <span className="block text-xl font-extrabold text-white tracking-tight">carters</span>
+                <span className="block text-xl font-extrabold text-white tracking-tight" id="brand-title">carters</span>
                 <span className="block text-xs font-semibold text-white/60 tracking-widest uppercase mt-0.5">care group</span>
               </div>
             </div>
@@ -82,11 +81,11 @@ export function Footer() {
                 </span>
               ))}
             </div>
-          </div>
+          </section>
 
           {/* Contact */}
-          <div>
-            <h4 className="font-bold mb-5 text-xs uppercase tracking-widest text-gray-500">
+          <section aria-labelledby="contact-title">
+            <h4 className="font-bold mb-5 text-xs uppercase tracking-widest text-gray-500" id="contact-title">
               Contact
             </h4>
             <div className="space-y-3 text-sm text-gray-400">
@@ -103,11 +102,11 @@ export function Footer() {
                 <span>PO Box 1118, Osborne Park, WA 6916</span>
               </div>
             </div>
-          </div>
+          </section>
 
           {/* Quick Links */}
-          <div>
-            <h4 className="font-bold mb-5 text-xs uppercase tracking-widest text-gray-500">
+          <section aria-labelledby="nav-title">
+            <h4 className="font-bold mb-5 text-xs uppercase tracking-widest text-gray-500" id="nav-title">
               Navigate
             </h4>
             <div className="space-y-2 text-sm text-gray-400">
@@ -127,7 +126,7 @@ export function Footer() {
                 </Link>
               ))}
             </div>
-          </div>
+          </section>
         </div>
 
         <div className="border-t border-white/10 mt-12 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
