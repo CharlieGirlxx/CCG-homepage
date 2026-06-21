@@ -357,7 +357,7 @@ export default function Home() {
                   <span className="w-2 h-2 rounded-full" style={{ background: data.gradientCss }} />
                   <span className="text-xs font-bold text-gray-600 uppercase tracking-widest">What We Offer</span>
                 </div>
-                <h2 className="text-4xl md:text-6xl font-black text-gray-900 leading-tight tracking-tight">
+                <h2 className="text-3xl md:text-4xl font-black text-gray-900 leading-tight tracking-tight">
                   Our<br />Services
                 </h2>
               </motion.div>
