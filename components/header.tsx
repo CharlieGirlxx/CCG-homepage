@@ -17,24 +17,24 @@ const skinConfig: Record<string, {
 }> = {
   ndis: {
     label: 'NDIS',
-    color: '#7a4d6f',
-    bg: '#f3e8f0',
-    accent: '#9b5f8f',
-    gradient: 'linear-gradient(135deg, #9b5f8f, #b8857a)',
+    color: '#be123c',
+    bg: '#fce7f3',
+    accent: '#ec4899',
+    gradient: 'linear-gradient(135deg, #ec4899, #f472b6)',
   },
   'aged-care': {
     label: 'Aged Care',
-    color: '#a86035',
-    bg: '#f5e8e0',
-    accent: '#c17a4a',
-    gradient: 'linear-gradient(135deg, #c17a4a, #d9956f)',
+    color: '#166534',
+    bg: '#dcfce7',
+    accent: '#16a34a',
+    gradient: 'linear-gradient(135deg, #16a34a, #22c55e)',
   },
   'service-provider': {
     label: 'Service Provider',
-    color: '#6b7fa0',
-    bg: '#e8edf5',
-    accent: '#8b9db5',
-    gradient: 'linear-gradient(135deg, #8b9db5, #a8b8cc)',
+    color: '#1e40af',
+    bg: '#eff6ff',
+    accent: '#3b82f6',
+    gradient: 'linear-gradient(135deg, #3b82f6, #60a5fa)',
   },
 }
 

@@ -10,21 +10,21 @@ import { Phone, Mail, MapPin, ArrowRight, Clock, MessageCircle } from 'lucide-re
 const contactData: Record<string, any> = {
   ndis: {
     heroImage: '/assets/ndis-contact-1.png',
-    accent: '#9b5f8f',
-    accentLight: '#f3e8f0',
-    gradientCss: 'linear-gradient(135deg, #9b5f8f, #b8857a)',
+    accent: '#ec4899',
+    accentLight: '#fce7f3',
+    gradientCss: 'linear-gradient(135deg, #ec4899, #f472b6)',
   },
   'aged-care': {
     heroImage: '/assets/hero-aged-1.png',
-    accent: '#c17a4a',
-    accentLight: '#f5e8e0',
-    gradientCss: 'linear-gradient(135deg, #c17a4a, #d9956f)',
+    accent: '#16a34a',
+    accentLight: '#dcfce7',
+    gradientCss: 'linear-gradient(135deg, #16a34a, #22c55e)',
   },
   'service-provider': {
     heroImage: '/assets/contact-welcome.png',
-    accent: '#8b9db5',
-    accentLight: '#e8edf5',
-    gradientCss: 'linear-gradient(135deg, #8b9db5, #a8b8cc)',
+    accent: '#3b82f6',
+    accentLight: '#eff6ff',
+    gradientCss: 'linear-gradient(135deg, #3b82f6, #60a5fa)',
   },
 }
 
