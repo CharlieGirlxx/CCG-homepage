@@ -134,6 +134,7 @@ export function Footer() {
                   setSkin(null)
                   localStorage.removeItem('carters-skin')
                 }}
+                aria-label="Switch between NDIS, Aged Care, and Service Provider portals"
                 className="text-xs font-semibold px-4 py-2 rounded-full border-2 transition-all duration-200 hover:opacity-80"
                 style={{
                   borderColor: config.accent,

@@ -162,7 +162,7 @@ export function PortalSelection() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.25 + i * 0.1, ease: [0.22, 1, 0.36, 1] }}
                 whileHover={{ y: -5, boxShadow: '0 20px 60px rgba(0,0,0,0.10)', transition: { duration: 0.25 } }}
-                onClick={() => setSkin(portal.id as any)}
+                onClick={() => setSkin(portal.id as 'aged-care' | 'ndis' | 'service-provider')}
                 className="group relative text-left bg-white rounded-3xl p-7 border border-gray-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-300"
                 style={{ boxShadow: '0 4px 24px rgba(0,0,0,0.06)' }}
               >

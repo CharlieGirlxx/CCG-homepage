@@ -7,7 +7,14 @@ import { useSkin } from '@/components/skin-provider'
 import { motion } from 'framer-motion'
 import { Phone, Mail, MapPin, ArrowRight, Clock, MessageCircle } from 'lucide-react'
 
-const contactData: Record<string, any> = {
+interface ContactConfig {
+  heroImage: string
+  accent: string
+  accentLight: string
+  gradientCss: string
+}
+
+const contactData: Record<string, ContactConfig> = {
   ndis: {
     heroImage: '/assets/ndis-contact-1.png',
     accent: '#d61f69',
@@ -35,7 +42,17 @@ const fadeUp = {
   transition: { duration: 0.65, ease: [0.22, 1, 0.36, 1] as const },
 }
 
-function FloatingShape({ size, x, y, delay, color, blur = 80, opacity = 0.18 }: any) {
+interface FloatingShapeProps {
+  size: number
+  x: string
+  y: string
+  delay: number
+  color: string
+  blur?: number
+  opacity?: number
+}
+
+function FloatingShape({ size, x, y, delay, color, blur = 80, opacity = 0.18 }: FloatingShapeProps) {
   return (
     <motion.div
       animate={{ y: [0, -20, 0], x: [0, 10, 0] }}
@@ -172,8 +189,9 @@ export default function Contact() {
                             id={field.id}
                             name={field.id}
                             placeholder={field.placeholder}
+                            required
                             className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 transition-all text-gray-900 bg-gray-50"
-                            style={{ ['--tw-ring-color' as any]: `${data.accent}40` }}
+                            style={{ '--tw-ring-color': `${data.accent}40` } as React.CSSProperties}
                           />
                         </div>
                       ))}
@@ -186,8 +204,9 @@ export default function Contact() {
                         id="subject"
                         name="subject"
                         placeholder="How can we help?"
+                        required
                         className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 transition-all text-gray-900 bg-gray-50"
-                        style={{ ['--tw-ring-color' as any]: `${data.accent}40` }}
+                        style={{ '--tw-ring-color': `${data.accent}40` } as React.CSSProperties}
                       />
                     </div>
 
@@ -198,8 +217,9 @@ export default function Contact() {
                         name="message"
                         rows={6}
                         placeholder="Your message..."
+                        required
                         className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 transition-all text-gray-900 bg-gray-50 resize-none"
-                        style={{ ['--tw-ring-color' as any]: `${data.accent}40` }}
+                        style={{ '--tw-ring-color': `${data.accent}40` } as React.CSSProperties}
                       />
                     </div>
 
