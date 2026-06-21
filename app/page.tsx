@@ -119,7 +119,7 @@ const stagger = (i: number) => ({
   transition: { duration: 0.6, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] as const },
 })
 
-// ── Animated circle decoration ────────────────────────────────────────────
+// ── Floating blur blob ────────────────────────────────────────────────────
 function FloatingShape({ size, x, y, delay, color, blur = 80, opacity = 0.18 }: any) {
   return (
     <motion.div
@@ -128,6 +128,37 @@ function FloatingShape({ size, x, y, delay, color, blur = 80, opacity = 0.18 }: 
       className="absolute rounded-full pointer-events-none"
       style={{ width: size, height: size, left: x, top: y, background: color, filter: `blur(${blur}px)`, opacity }}
     />
+  )
+}
+
+// ── Animated SVG swirl decoration ────────────────────────────────────────
+function Swirl({ color, opacity, rotate, scale, x, y, delay }: {
+  color: string; opacity: number; rotate: number; scale: number
+  x: string; y: string; delay: number
+}) {
+  return (
+    <motion.div
+      className="absolute pointer-events-none select-none"
+      style={{ left: x, top: y, opacity }}
+      animate={{ rotate: [rotate, rotate + 360] }}
+      transition={{ duration: 70 + delay * 10, repeat: Infinity, ease: 'linear' }}
+    >
+      <motion.div
+        animate={{ scale: [scale, scale * 1.07, scale] }}
+        transition={{ duration: 14 + delay * 2, repeat: Infinity, ease: 'easeInOut', delay }}
+      >
+        <svg width="640" height="640" viewBox="0 0 700 700" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="M350 350 C350 200, 500 150, 580 250 C660 350, 600 500, 480 540 C360 580, 200 500, 180 380 C160 260, 260 150, 370 160 C480 170, 570 260, 560 360 C550 460, 460 530, 360 520 C260 510, 190 430, 200 340 C210 250, 290 190, 370 200 C450 210, 510 280, 500 350 C490 420, 430 460, 360 450 C290 440, 250 390, 260 330 C270 270, 320 240, 370 250 C420 260, 450 300, 440 340 C430 380, 400 400, 370 395"
+            stroke={color} strokeWidth="1.8" strokeLinecap="round" fill="none"
+          />
+          <path
+            d="M350 350 C220 350, 170 200, 270 130 C370 60, 520 120, 560 240 C600 360, 520 510, 400 540 C280 570, 140 490, 130 370 C120 250, 210 130, 330 120 C450 110, 570 200, 570 320 C570 440, 480 550, 360 545 C240 540, 150 450, 160 330 C170 210, 270 130, 380 140 C490 150, 570 240, 560 350 C550 460, 460 540, 350 530"
+            stroke={color} strokeWidth="0.9" strokeLinecap="round" fill="none" opacity="0.45"
+          />
+        </svg>
+      </motion.div>
+    </motion.div>
   )
 }
 
@@ -183,10 +214,14 @@ export default function Home() {
           <div className="absolute inset-0" style={{ background: 'linear-gradient(135deg, rgba(0,0,0,0.78) 0%, rgba(0,0,0,0.42) 60%, rgba(0,0,0,0.15) 100%)' }} />
           <div className="absolute inset-0 opacity-30" style={{ background: data.gradientCss, mixBlendMode: 'multiply' }} />
 
-          {/* Floating decoration shapes */}
-          <FloatingShape size={320} x="70%" y="10%" delay={0} color={data.overlayColor} blur={100} opacity={0.22} />
-          <FloatingShape size={180} x="5%" y="60%" delay={3} color={data.overlayColor} blur={70} opacity={0.18} />
-          <FloatingShape size={120} x="85%" y="65%" delay={6} color="#ffffff" blur={60} opacity={0.06} />
+          {/* Animated swirl decorations */}
+          <Swirl color={data.overlayColor} opacity={0.28} rotate={0}   scale={1}    x="55%"   y="-25%" delay={0} />
+          <Swirl color={data.overlayColor} opacity={0.18} rotate={180} scale={0.65} x="-18%"  y="35%"  delay={3} />
+          <Swirl color="#ffffff"           opacity={0.06} rotate={90}  scale={0.5}  x="80%"   y="50%"  delay={6} />
+
+          {/* Soft blur blobs underneath */}
+          <FloatingShape size={260} x="68%" y="5%"  delay={0} color={data.overlayColor} blur={90}  opacity={0.20} />
+          <FloatingShape size={160} x="5%"  y="58%" delay={3} color={data.overlayColor} blur={60}  opacity={0.15} />
 
           {/* Diagonal bottom clip */}
           <div className="absolute bottom-0 left-0 right-0 h-32 pointer-events-none" style={{ background: 'linear-gradient(to bottom, transparent, white)' }} />
@@ -291,8 +326,10 @@ export default function Home() {
             SERVICES — 3-col card grid with large images
         ══════════════════════════════════════════ */}
         <section className="py-28 relative overflow-hidden" style={{ background: data.accentLight }}>
-          <FloatingShape size={500} x="-10%" y="10%" delay={1} color={data.overlayColor} blur={120} opacity={0.1} />
-          <FloatingShape size={300} x="80%" y="60%" delay={4} color={data.overlayColor} blur={90} opacity={0.08} />
+          <Swirl color={data.overlayColor} opacity={0.2} rotate={30}  scale={1.1}  x="-22%" y="-10%" delay={1} />
+          <Swirl color={data.overlayColor} opacity={0.13} rotate={210} scale={0.7}  x="72%"  y="45%"  delay={3} />
+          <FloatingShape size={400} x="-8%"  y="15%"  delay={1} color={data.overlayColor} blur={110} opacity={0.08} />
+          <FloatingShape size={250} x="78%"  y="55%"  delay={4} color={data.overlayColor} blur={80}  opacity={0.07} />
 
           <div className="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
             <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-16">
@@ -492,8 +529,10 @@ export default function Home() {
             CTA — full-bleed gradient with shapes
         ══════════════════════════════════════════ */}
         <section className="relative overflow-hidden py-28" style={{ background: data.gradientCss }}>
-          <FloatingShape size={400} x="60%" y="-20%" delay={0} color="#ffffff" blur={100} opacity={0.1} />
-          <FloatingShape size={250} x="-5%" y="50%" delay={3} color="#ffffff" blur={80} opacity={0.08} />
+          <Swirl color="#ffffff" opacity={0.14} rotate={0}   scale={1.1}  x="55%"  y="-30%" delay={0} />
+          <Swirl color="#ffffff" opacity={0.08} rotate={150} scale={0.65} x="-18%" y="30%"  delay={2} />
+          <FloatingShape size={320} x="58%"  y="-18%" delay={0} color="#ffffff" blur={90} opacity={0.09} />
+          <FloatingShape size={200} x="-4%"  y="45%"  delay={3} color="#ffffff" blur={70} opacity={0.07} />
 
           {/* Large decorative text */}
           <div
