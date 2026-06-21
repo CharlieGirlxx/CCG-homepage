@@ -482,25 +482,19 @@ export default function Home() {
                   viewport={{ once: true }}
                   transition={{ duration: 0.7, delay: 0.2 }}
                   whileHover={{ scale: 1.02 }}
-                  className="flex-1 rounded-3xl flex flex-col items-center justify-center text-center p-8 gap-5 group"
-                  style={{ background: data.gradientCss }}
+                  className="flex-1 rounded-3xl flex flex-col items-center justify-center text-center p-8 gap-4 group bg-white border border-gray-100"
+                  style={{ boxShadow: '0 4px 24px rgba(0,0,0,0.06)' }}
                 >
-                  {/* NDIS wordmark */}
-                  <div className="bg-white rounded-2xl px-7 py-4 shadow-lg">
-                    <svg viewBox="0 0 160 52" className="h-10 w-auto" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="NDIS logo">
-                      <rect width="160" height="52" rx="4" fill="white"/>
-                      <text x="14" y="38" fontFamily="Arial, sans-serif" fontWeight="900" fontSize="36" fill="#003087" letterSpacing="1">NDIS</text>
-                      <rect x="110" y="10" width="38" height="32" rx="3" fill="#003087"/>
-                      <text x="114" y="31" fontFamily="Arial, sans-serif" fontWeight="700" fontSize="11" fill="white">REGISTERED</text>
-                    </svg>
-                  </div>
-                  <div>
-                    <p className="text-white font-bold text-base leading-snug">NDIS Registered Provider</p>
-                    <p className="text-white/70 text-xs mt-1 flex items-center justify-center gap-1 group-hover:text-white/90 transition-colors">
-                      Verify registration
-                      <ArrowRight size={11} />
-                    </p>
-                  </div>
+                  {/* Official I ♥ NDIS Registered Provider logo */}
+                  <img
+                    src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/I%20heart%20NDIS%20Registered%20provider%20logo%20-%20Short-7sCn71WpjhopOXvDj4TtciKVEkNNNV.png"
+                    alt="I love NDIS — Registered NDIS Provider"
+                    className="h-24 w-auto object-contain"
+                  />
+                  <p className="text-gray-500 text-xs flex items-center justify-center gap-1 group-hover:text-gray-700 transition-colors">
+                    Verify our registration
+                    <ArrowRight size={11} />
+                  </p>
                 </motion.a>
               </div>
             </div>
