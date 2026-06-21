@@ -165,28 +165,15 @@ function Marquee({ color, items }: { color: string; items: string[] }) {
   )
 }
 
-// ── Main component ────────────────────────────────────────────────────────
-export default function Home() {
-  const { skin } = useSkin()
+// ── Parallax Hero (isolated so useScroll ref is always hydrated) ──────────
+function ParallaxHero({ data }: { data: any }) {
   const heroRef = useRef<HTMLElement>(null)
   const { scrollYProgress } = useScroll({ target: heroRef, offset: ['start start', 'end start'] })
   const imgY = useTransform(scrollYProgress, [0, 1], ['0%', '20%'])
   const textY = useTransform(scrollYProgress, [0, 1], ['0%', '30%'])
 
-  if (!skin) return <PortalSelection />
-
-  const data = skinData[skin || 'ndis']
-  const marqueeItems = ['NDIS Registered', 'Aged Care Approved', 'Person-Centred Care', 'Quality & Safety', 'Community First', 'Trusted Provider']
-
   return (
-    <PageTransition>
-      <div className="min-h-screen flex flex-col bg-white overflow-x-hidden">
-        <Header />
-
-        {/* ══════════════════════════════════════════
-            HERO — full-bleed parallax photo + text
-        ══════════════════════════════════════════ */}
-        <section ref={heroRef} className="relative overflow-hidden" style={{ height: '100vh', minHeight: 600 }}>
+    <section ref={heroRef} className="relative overflow-hidden" style={{ height: '100vh', minHeight: 600 }}>
           {/* Parallax photo */}
           <motion.div className="absolute inset-0 scale-110" style={{ y: imgY }}>
             <img src={data.heroImage} alt="" aria-hidden="true" className="w-full h-full object-cover" />
@@ -282,10 +269,28 @@ export default function Home() {
             />
           </motion.div>
         </section>
+  )
+}
 
-        {/* ═════════════════════���════════════
+// ── Main component ────────────────────────────────────────────────────────
+export default function Home() {
+  const { skin } = useSkin()
+
+  if (!skin) return <PortalSelection />
+
+  const data = skinData[skin || 'ndis']
+  const marqueeItems = ['NDIS Registered', 'Aged Care Approved', 'Person-Centred Care', 'Quality & Safety', 'Community First', 'Trusted Provider']
+
+  return (
+    <PageTransition>
+      <div className="min-h-screen flex flex-col bg-white overflow-x-hidden">
+        <Header />
+
+        <ParallaxHero data={data} />
+
+        {/* ══════════════════════════════════════════
             MARQUEE strip
-        ══════════════════════════════════ */}
+        ══════════════════════════════════════════ */}
         <Marquee color={data.marqueeBg} items={marqueeItems} />
 
         {/* ══════════════════════════════════════════
