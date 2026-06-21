@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion } from 'framer-motion'
 
 interface ImageCarouselProps {
   images: string[]
@@ -19,35 +19,35 @@ export function ImageCarousel({
   const [current, setCurrent] = useState(0)
 
   useEffect(() => {
+    if (images.length === 0) return
+    
     const timer = setInterval(() => {
       setCurrent((prev) => (prev + 1) % images.length)
     }, interval)
+    
     return () => clearInterval(timer)
   }, [images.length, interval])
 
+  if (images.length === 0) {
+    return (
+      <div className={`relative overflow-hidden bg-gray-900 ${className}`}>
+        {overlay && <div className="absolute inset-0 pointer-events-none z-20">{overlay}</div>}
+      </div>
+    )
+  }
+
   return (
     <div className={`relative overflow-hidden bg-gray-900 ${className}`}>
-      <AnimatePresence mode="wait">
-        <motion.div
-          key={current}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.8 }}
-          className="absolute inset-0"
-        >
-          <img
-            src={images[current]}
-            alt={`Carousel image ${current + 1}`}
-            className="w-full h-full object-cover"
-            decoding="async"
-            loading="lazy"
-          />
-        </motion.div>
-      </AnimatePresence>
+      {/* Current image */}
+      <img
+        src={images[current]}
+        alt={`Carousel image ${current + 1}`}
+        className="absolute inset-0 w-full h-full object-cover"
+        loading="eager"
+      />
       
       {overlay && (
-        <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute inset-0 pointer-events-none z-20">
           {overlay}
         </div>
       )}

@@ -170,11 +170,11 @@ export default function Home() {
         <Header />
 
         {/* ── Hero ── */}
-        <section className="relative overflow-hidden min-h-[90vh] flex items-center flex-1">
+        <section className="relative overflow-hidden" style={{ minHeight: '90vh', display: 'flex', alignItems: 'center' }}>
           <ImageCarousel
             images={data.heroImages}
             interval={7000}
-            className="absolute inset-0 w-full h-full"
+            className="absolute inset-0 w-full h-full -z-10"
             overlay={
               <div
                 className="absolute inset-0 w-full h-full"
