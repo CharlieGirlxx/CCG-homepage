@@ -27,8 +27,12 @@ export function SkinProvider({ children }: { children: ReactNode }) {
   }, [])
 
   useEffect(() => {
-    if (skin && mounted) {
-      localStorage.setItem('carters-skin', skin)
+    if (mounted) {
+      if (skin) {
+        localStorage.setItem('carters-skin', skin)
+      } else {
+        localStorage.removeItem('carters-skin')
+      }
     }
   }, [skin, mounted])
 

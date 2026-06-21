@@ -17,24 +17,24 @@ const skinConfig: Record<string, {
 }> = {
   ndis: {
     label: 'NDIS',
-    color: '#0b7a52',
-    bg: '#f0fdf4',
-    accent: '#0d8a5d',
-    gradient: 'linear-gradient(135deg, #0d8a5d, #14b87a)',
+    color: '#a01650',
+    bg: '#f8d7e6',
+    accent: '#d61f69',
+    gradient: 'linear-gradient(135deg, #d61f69, #e84384)',
   },
   'aged-care': {
     label: 'Aged Care',
-    color: '#9b1239',
-    bg: '#fff1f2',
-    accent: '#be123c',
-    gradient: 'linear-gradient(135deg, #be123c, #e11d6a)',
+    color: '#166534',
+    bg: '#dcfce7',
+    accent: '#16a34a',
+    gradient: 'linear-gradient(135deg, #16a34a, #22c55e)',
   },
   'service-provider': {
     label: 'Service Provider',
-    color: '#1d4ed8',
+    color: '#1e40af',
     bg: '#eff6ff',
-    accent: '#2563eb',
-    gradient: 'linear-gradient(135deg, #2563eb, #06b6d4)',
+    accent: '#3b82f6',
+    gradient: 'linear-gradient(135deg, #3b82f6, #60a5fa)',
   },
 }
 
@@ -85,20 +85,39 @@ export function Header() {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-18 py-3">
-          {/* Logo */}
-          <Link href="/" className="flex items-center gap-3 group">
-            <Image
-              src="/assets/carters-logo.png"
-              alt="Carters Care"
-              width={140}
-              height={60}
-              className="transition-transform duration-300 group-hover:scale-105"
-              priority
-            />
-          </Link>
+          {/* Logo + NDIS Badge */}
+          <div className="flex items-center gap-6">
+            <Link href="/" className="flex items-center gap-3 group">
+              <Image
+                src="/assets/carters-logo.png"
+                alt="Carters Care"
+                width={160}
+                height={60}
+                className="h-14 w-auto transition-transform duration-300 group-hover:scale-105"
+                priority
+              />
+            </Link>
+
+            {/* NDIS Badge */}
+            <a
+              href="https://www.ndiscommission.gov.au/provider-registration/carters-care-group-ccg-pty-ltd"
+              target="_blank"
+              rel="noopener noreferrer"
+              title="Verify Carters Care Group NDIS Provider Registration"
+              className="hidden lg:block transition-transform hover:scale-105"
+            >
+              <Image
+                src="/assets/ndis-registered-badge.png"
+                alt="Registered NDIS Provider - Carters Care Group"
+                width={120}
+                height={72}
+                className="h-16 w-auto"
+              />
+            </a>
+          </div>
 
           {/* Desktop Nav */}
-          <nav className="hidden md:flex items-center gap-1">
+          <nav className="hidden md:flex items-center gap-1" aria-label="Main navigation">
             {navLinks.map((link) => {
               const active = pathname === link.href
               return (
@@ -121,22 +140,9 @@ export function Header() {
               )
             })}
 
-            {config && (
-              <button
-                onClick={() => setSkin(null)}
-                className="ml-4 text-xs font-semibold px-3.5 py-1.5 rounded-full border-2 transition-all duration-200 hover:opacity-80"
-                style={{
-                  borderColor: config.accent,
-                  color: config.accent,
-                  background: 'transparent',
-                }}
-              >
-                Switch Portal
-              </button>
-            )}
-
             <a
               href="tel:1300002723"
+              aria-label="Call us at 1300 00 27 23"
               className="ml-2 flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-bold text-white transition-all duration-200 hover:scale-105 hover:shadow-md"
               style={{ background: config?.gradient || 'linear-gradient(135deg, #9b188f, #c41e5a)' }}
             >
@@ -181,12 +187,13 @@ export function Header() {
       {/* Mobile Menu */}
       <AnimatePresence>
         {mobileOpen && (
-          <motion.div
+          <motion.nav
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: 'auto', opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
             className="md:hidden overflow-hidden bg-white/98 border-t border-gray-100"
+            aria-label="Mobile navigation"
           >
             <div className="px-4 py-4 space-y-1">
               {navLinks.map((link, i) => (
@@ -228,7 +235,7 @@ export function Header() {
                 </a>
               </div>
             </div>
-          </motion.div>
+          </motion.nav>
         )}
       </AnimatePresence>
     </header>

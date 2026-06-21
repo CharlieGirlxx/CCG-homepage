@@ -48,9 +48,14 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${geistSans.variable} ${geistMono.variable}`}>
       <body className="font-sans antialiased">
+        <a href="#main" className="sr-only focus:not-sr-only">
+          Skip to main content
+        </a>
         <SkinProvider>
           <ScrollToTop />
-          {children}
+          <main id="main">
+            {children}
+          </main>
         </SkinProvider>
         {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>

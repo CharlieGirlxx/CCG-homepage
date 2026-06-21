@@ -20,7 +20,25 @@ import {
 } from 'lucide-react'
 import { useState } from 'react'
 
-const servicesData: Record<string, any> = {
+interface ServiceItem {
+  icon: React.ComponentType<{ size?: number; className?: string }>
+  title: string
+  desc: string
+  detail: string
+}
+
+interface ServicesConfig {
+  title: string
+  subtitle: string
+  heroImage: string
+  splitImages: string[]
+  services: ServiceItem[]
+  accent: string
+  accentLight: string
+  gradientCss: string
+}
+
+const servicesData: Record<string, ServicesConfig> = {
   ndis: {
     title: 'NDIS Support\nServices',
     subtitle: 'Comprehensive support services tailored to your NDIS plan and personal goals.',
@@ -34,9 +52,9 @@ const servicesData: Record<string, any> = {
       { icon: Brain, title: 'Developmental Life Skills', desc: 'Build confidence and capability with programs tailored to your goals — from cooking and budgeting to communication and personal organisation.', detail: 'Developing life skills is a journey, and we are here every step of the way. Our programs are customised to your individual goals and learning style, covering practical skills like meal planning and financial management through to social skills and self-advocacy, all in a supportive, encouraging environment.' },
       { icon: Heart, title: 'Respite Care', desc: 'Quality short-term care for participants — and a well-deserved break for families and primary carers — without any disruption to your care routine.', detail: 'Caring for someone you love is deeply rewarding, but everyone needs time to recharge. Our respite services provide seamless, high-quality care for participants while giving carers the confidence to rest, knowing their loved one is in safe hands. We maintain existing routines and preferences to ensure continuity and comfort.' },
     ],
-    accent: '#0d8a5d',
-    accentLight: '#f0fdf4',
-    gradientCss: 'linear-gradient(135deg, #0d8a5d, #14b87a)',
+    accent: '#d61f69',
+    accentLight: '#f8d7e6',
+    gradientCss: 'linear-gradient(135deg, #d61f69, #e84384)',
   },
   'aged-care': {
     title: 'Aged Care\nServices',
@@ -51,9 +69,9 @@ const servicesData: Record<string, any> = {
       { icon: Heart, title: 'Respite Care', desc: 'Trusted short-term care for your loved one, giving family carers the time they need to rest and recharge with complete peace of mind.', detail: 'Family carers do extraordinary work, and they deserve proper rest. Our respite services provide high-quality temporary care in a comfortable, familiar environment, maintaining all existing routines and preferences so the transition is seamless for everyone.' },
       { icon: Sparkles, title: 'Residential Care', desc: 'Warm, intimate residential homes with personalised care plans, meaningful daily activities, and a genuine sense of community and belonging.', detail: 'Our residential care homes are designed to feel like home — because they are. Small, close-knit communities with attentive, compassionate staff, personalised care plans, and a full calendar of social and therapeutic activities. Residents and their families are always kept informed and involved.' },
     ],
-    accent: '#be123c',
-    accentLight: '#fff1f2',
-    gradientCss: 'linear-gradient(135deg, #be123c, #e11d6a)',
+    accent: '#16a34a',
+    accentLight: '#dcfce7',
+    gradientCss: 'linear-gradient(135deg, #16a34a, #22c55e)',
   },
   'service-provider': {
     title: 'Carters Care\nPlatform Features',
@@ -68,9 +86,9 @@ const servicesData: Record<string, any> = {
       { icon: Home, title: 'Billing & Claims', desc: 'Eliminate billing errors and accelerate cash flow with automated NDIS claim generation, aged care invoicing, payment tracking, and reconciliation.', detail: 'Billing in NDIS and aged care is complex — we make it simple. Our integrated billing module auto-generates claims from completed shifts, validates against NDIS pricing limits, submits to the NDIS portal, and tracks payment status. Fewer errors, faster payments, and complete financial visibility.' },
       { icon: Sparkles, title: 'Worker App', desc: 'Empower your frontline team with a purpose-built mobile app — shift details, client notes, progress records, timesheets, and incident reporting, all on the go.', detail: 'Our companion mobile app is designed for the realities of frontline care work. Support workers can view upcoming shifts, access client care notes, record progress and incidents, submit timesheets, and communicate with coordinators — all from their phone, with offline capability for remote areas.' },
     ],
-    accent: '#2563eb',
+    accent: '#3b82f6',
     accentLight: '#eff6ff',
-    gradientCss: 'linear-gradient(135deg, #2563eb, #06b6d4)',
+    gradientCss: 'linear-gradient(135deg, #3b82f6, #60a5fa)',
   },
 }
 
@@ -81,7 +99,17 @@ const fadeUp = {
   transition: { duration: 0.65, ease: [0.22, 1, 0.36, 1] as const },
 }
 
-function FloatingShape({ size, x, y, delay, color, blur = 80, opacity = 0.15 }: any) {
+interface FloatingShapeProps {
+  size: number
+  x: string
+  y: string
+  delay: number
+  color: string
+  blur?: number
+  opacity?: number
+}
+
+function FloatingShape({ size, x, y, delay, color, blur = 80, opacity = 0.15 }: FloatingShapeProps) {
   return (
     <motion.div
       animate={{ y: [0, -20, 0], x: [0, 10, 0] }}
@@ -159,7 +187,7 @@ export default function Services() {
             </motion.div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {data.services.map((s: any, i: number) => {
+              {data.services.map((s, i: number) => {
                 const Icon = s.icon
                 const isOpen = expanded === s.title
                 return (

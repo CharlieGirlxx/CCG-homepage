@@ -22,8 +22,30 @@ import {
   Award,
 } from 'lucide-react'
 
+// ── Types ────────────────────────────────────────────────────────────────
+interface SkinConfig {
+  heroTitle: string
+  heroText: string
+  heroImage: string
+  splitImage: string
+  aboutImage: string
+  cta: string
+  services: Array<{
+    title: string
+    desc: string
+    icon: React.ComponentType<{ size?: number; className?: string }>
+  }>
+  quote: string
+  checks: string[]
+  accent: string
+  accentLight: string
+  gradientCss: string
+  overlayColor: string
+  marqueeBg: string
+}
+
 // ── Skin data ──────────────────────────────────────────────────────────────
-const skinData: Record<string, any> = {
+const skinData: Record<string, SkinConfig> = {
   ndis: {
     heroTitle: 'Your NDIS Journey,\nSupported Every Step',
     heroText: 'Personalised disability support services that put you in control — from daily living to community participation.',
@@ -38,11 +60,11 @@ const skinData: Record<string, any> = {
     ],
     quote: 'Our NDIS support workers are passionate about helping participants live their best lives. We listen, we care, we deliver.',
     checks: ['NDIS Registered Provider', 'Personalised Support Plans', 'Experienced Care Workers', '24/7 On-Call Support'],
-    accent: '#0b7a52',
-    accentLight: '#f0fdf4',
-    gradientCss: 'linear-gradient(135deg, #0d8a5d, #14b87a)',
-    overlayColor: '#0d8a5d',
-    marqueeBg: '#0d8a5d',
+    accent: '#d61f69',
+    accentLight: '#f8d7e6',
+    gradientCss: 'linear-gradient(135deg, #d61f69, #e84384)',
+    overlayColor: '#d61f69',
+    marqueeBg: '#d61f69',
   },
   'aged-care': {
     heroTitle: 'Compassionate Aged Care,\nWhere You Belong',
@@ -58,11 +80,11 @@ const skinData: Record<string, any> = {
     ],
     quote: 'We treat every person in our care like family, because everyone deserves to feel valued, respected, and at home.',
     checks: ['Government Approved Provider', 'Culturally Sensitive Care', 'Qualified & Compassionate Staff', 'Regular Family Updates'],
-    accent: '#9b1239',
-    accentLight: '#fff1f2',
-    gradientCss: 'linear-gradient(135deg, #be123c, #e11d6a)',
-    overlayColor: '#be123c',
-    marqueeBg: '#be123c',
+    accent: '#16a34a',
+    accentLight: '#dcfce7',
+    gradientCss: 'linear-gradient(135deg, #16a34a, #22c55e)',
+    overlayColor: '#16a34a',
+    marqueeBg: '#16a34a',
   },
   'service-provider': {
     heroTitle: 'The Carters Care\nPlatform',
@@ -78,11 +100,11 @@ const skinData: Record<string, any> = {
     ],
     quote: "The Carters Care Platform was built by care providers, for care providers — everything you need to run your organisation, nothing you don't.",
     checks: ['NDIS Practice Standards Ready', 'Cloud-Based & Secure', 'Real-Time Rostering', 'Automated Compliance Reports'],
-    accent: '#1d4ed8',
+    accent: '#3b82f6',
     accentLight: '#eff6ff',
-    gradientCss: 'linear-gradient(135deg, #2563eb, #06b6d4)',
-    overlayColor: '#2563eb',
-    marqueeBg: '#2563eb',
+    gradientCss: 'linear-gradient(135deg, #3b82f6, #60a5fa)',
+    overlayColor: '#3b82f6',
+    marqueeBg: '#3b82f6',
   },
 }
 
@@ -102,7 +124,17 @@ const stagger = (i: number) => ({
 })
 
 // ── Floating blur blob ────────────────────────────────────────────────────
-function FloatingShape({ size, x, y, delay, color, blur = 80, opacity = 0.18 }: any) {
+interface FloatingShapeProps {
+  size: number
+  x: string
+  y: string
+  delay: number
+  color: string
+  blur?: number
+  opacity?: number
+}
+
+function FloatingShape({ size, x, y, delay, color, blur = 80, opacity = 0.18 }: FloatingShapeProps) {
   return (
     <motion.div
       animate={{ y: [0, -22, 0], x: [0, 12, 0], rotate: [0, 6, 0] }}
@@ -114,10 +146,17 @@ function FloatingShape({ size, x, y, delay, color, blur = 80, opacity = 0.18 }: 
 }
 
 // ── Animated SVG swirl decoration ────────────────────────────────────────
-function Swirl({ color, opacity, rotate, scale, x, y, delay }: {
-  color: string; opacity: number; rotate: number; scale: number
-  x: string; y: string; delay: number
-}) {
+interface SwirlProps {
+  color: string
+  opacity: number
+  rotate: number
+  scale: number
+  x: string
+  y: string
+  delay: number
+}
+
+function Swirl({ color, opacity, rotate, scale, x, y, delay }: SwirlProps) {
   return (
     <motion.div
       className="absolute pointer-events-none select-none"
@@ -145,7 +184,12 @@ function Swirl({ color, opacity, rotate, scale, x, y, delay }: {
 }
 
 // ── Scrolling marquee strip ───────────────────────────────────────────────
-function Marquee({ color, items }: { color: string; items: string[] }) {
+interface MarqueeProps {
+  color: string
+  items: string[]
+}
+
+function Marquee({ color, items }: MarqueeProps) {
   const doubled = [...items, ...items]
   return (
     <div className="overflow-hidden py-4" style={{ background: color }}>
@@ -165,28 +209,19 @@ function Marquee({ color, items }: { color: string; items: string[] }) {
   )
 }
 
-// ── Main component ────────────────────────────────────────────────────────
-export default function Home() {
-  const { skin } = useSkin()
+// ── Parallax Hero (isolated so useScroll ref is always hydrated) ──────────
+interface ParallexHeroProps {
+  data: SkinConfig
+}
+
+function ParallaxHero({ data }: ParallexHeroProps) {
   const heroRef = useRef<HTMLElement>(null)
   const { scrollYProgress } = useScroll({ target: heroRef, offset: ['start start', 'end start'] })
   const imgY = useTransform(scrollYProgress, [0, 1], ['0%', '20%'])
   const textY = useTransform(scrollYProgress, [0, 1], ['0%', '30%'])
 
-  if (!skin) return <PortalSelection />
-
-  const data = skinData[skin || 'ndis']
-  const marqueeItems = ['NDIS Registered', 'Aged Care Approved', 'Person-Centred Care', 'Quality & Safety', 'Community First', 'Trusted Provider']
-
   return (
-    <PageTransition>
-      <div className="min-h-screen flex flex-col bg-white overflow-x-hidden">
-        <Header />
-
-        {/* ══════════════════════════════════════════
-            HERO — full-bleed parallax photo + text
-        ══════════════════════════════════════════ */}
-        <section ref={heroRef} className="relative overflow-hidden" style={{ height: '100vh', minHeight: 600 }}>
+    <section ref={heroRef} className="relative overflow-hidden" style={{ height: '100vh', minHeight: 600 }}>
           {/* Parallax photo */}
           <motion.div className="absolute inset-0 scale-110" style={{ y: imgY }}>
             <img src={data.heroImage} alt="" aria-hidden="true" className="w-full h-full object-cover" />
@@ -282,16 +317,34 @@ export default function Home() {
             />
           </motion.div>
         </section>
+  )
+}
 
-        {/* ═════════════════════���════════════
+// ── Main component ────────────────────────────────────────────────────────
+export default function Home() {
+  const { skin } = useSkin()
+
+  if (!skin) return <PortalSelection />
+
+  const data = skinData[skin || 'ndis']
+  const marqueeItems = ['NDIS Registered', 'Aged Care Approved', 'Person-Centred Care', 'Quality & Safety', 'Community First', 'Trusted Provider']
+
+  return (
+    <PageTransition>
+      <div className="min-h-screen flex flex-col bg-white overflow-x-hidden">
+        <Header />
+
+        <ParallaxHero data={data} />
+
+        {/* ══════════════════════════════════════════
             MARQUEE strip
-        ══════════════════════════════════ */}
+        ══════════════════════════════════════════ */}
         <Marquee color={data.marqueeBg} items={marqueeItems} />
 
         {/* ══════════════════════════════════════════
             SERVICES — 3-col card grid with large images
         ══════════════════════════════════════════ */}
-        <section className="py-28 relative overflow-hidden" style={{ background: data.accentLight }}>
+        <section className="py-20 relative overflow-hidden" style={{ background: data.accentLight }}>
           <Swirl color={data.overlayColor} opacity={0.2} rotate={30}  scale={1.1}  x="-22%" y="-10%" delay={1} />
           <Swirl color={data.overlayColor} opacity={0.13} rotate={210} scale={0.7}  x="72%"  y="45%"  delay={3} />
           <FloatingShape size={400} x="-8%"  y="15%"  delay={1} color={data.overlayColor} blur={110} opacity={0.08} />
@@ -304,7 +357,7 @@ export default function Home() {
                   <span className="w-2 h-2 rounded-full" style={{ background: data.gradientCss }} />
                   <span className="text-xs font-bold text-gray-600 uppercase tracking-widest">What We Offer</span>
                 </div>
-                <h2 className="text-4xl md:text-6xl font-black text-gray-900 leading-tight tracking-tight">
+                <h2 className="text-3xl md:text-4xl font-black text-gray-900 leading-tight tracking-tight">
                   Our<br />Services
                 </h2>
               </motion.div>
@@ -316,7 +369,7 @@ export default function Home() {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {data.services.map((s: any, i: number) => {
+              {data.services.map((s, i: number) => {
                 const Icon = s.icon
                 return (
                   <motion.div
@@ -369,7 +422,7 @@ export default function Home() {
             SPLIT — full-bleed photo left, rich text right
         ══════════════════════════════════════════ */}
         <section className="relative overflow-hidden bg-white">
-          <div className="grid grid-cols-1 lg:grid-cols-2 min-h-[600px]">
+          <div className="grid grid-cols-1 lg:grid-cols-2 min-h-[500px]">
             {/* Photo side */}
             <motion.div
               initial={{ opacity: 0, x: -60 }}
@@ -377,7 +430,7 @@ export default function Home() {
               viewport={{ once: true }}
               transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
               className="relative overflow-hidden"
-              style={{ minHeight: 400 }}
+              style={{ minHeight: 350 }}
             >
               <img src={data.splitImage} alt="" aria-hidden="true" className="absolute inset-0 w-full h-full object-cover" />
               {/* Gradient on right edge to blend into white */}
@@ -414,7 +467,7 @@ export default function Home() {
                   <span className="w-2 h-2 rounded-full" style={{ background: data.gradientCss }} />
                   <span className="text-xs font-bold text-gray-600 uppercase tracking-widest">Why Choose Us</span>
                 </div>
-                <h2 className="text-4xl md:text-5xl font-black text-gray-900 mb-6 leading-tight tracking-tight">
+                <h2 className="text-3xl md:text-4xl font-black text-gray-900 mb-6 leading-tight tracking-tight">
                   Care that puts<br />
                   <span style={{ color: data.accent }}>people first.</span>
                 </h2>
@@ -447,64 +500,12 @@ export default function Home() {
           </div>
         </section>
 
-        {/* ══════════════════════════════════════════
-            PHOTO BENTO GRID
-        ══════════════════════════════════════════ */}
-        <section className="py-6 px-4 lg:px-12 bg-white">
-          <div className="max-w-7xl mx-auto">
-            <div className="grid grid-cols-3 gap-4" style={{ height: 400 }}>
-              <motion.div
-                initial={{ opacity: 0, scale: 0.95 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.7 }}
-                className="col-span-2 rounded-3xl overflow-hidden relative"
-              >
-                <img src={data.aboutImage} alt="" aria-hidden="true" className="w-full h-full object-cover" />
-                <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, rgba(0,0,0,0.4) 0%, transparent 60%)' }} />
-              </motion.div>
-              <div className="flex flex-col gap-4">
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.95 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.7, delay: 0.1 }}
-                  className="flex-1 rounded-3xl overflow-hidden"
-                >
-                  <img src={data.heroImage} alt="" aria-hidden="true" className="w-full h-full object-cover" />
-                </motion.div>
-                <motion.a
-                  href="https://www.ndiscommission.gov.au/provider-registration/carters-care-group-ccg-pty-ltd"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  initial={{ opacity: 0, scale: 0.95 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.7, delay: 0.2 }}
-                  whileHover={{ scale: 1.02 }}
-                  className="flex-1 rounded-3xl flex flex-col items-center justify-center text-center p-8 gap-4 group bg-white border border-gray-100"
-                  style={{ boxShadow: '0 4px 24px rgba(0,0,0,0.06)' }}
-                >
-                  {/* Official I ♥ NDIS Registered Provider logo */}
-                  <img
-                    src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/I%20heart%20NDIS%20Registered%20provider%20logo%20-%20Short-7sCn71WpjhopOXvDj4TtciKVEkNNNV.png"
-                    alt="I love NDIS — Registered NDIS Provider"
-                    className="h-24 w-auto object-contain"
-                  />
-                  <p className="text-gray-500 text-xs flex items-center justify-center gap-1 group-hover:text-gray-700 transition-colors">
-                    Verify our registration
-                    <ArrowRight size={11} />
-                  </p>
-                </motion.a>
-              </div>
-            </div>
-          </div>
-        </section>
+
 
         {/* ══════════════════════════════════════════
             CTA — full-bleed gradient with shapes
         ══════════════════════════════════════════ */}
-        <section className="relative overflow-hidden py-28" style={{ background: data.gradientCss }}>
+        <section className="relative overflow-hidden py-20" style={{ background: data.gradientCss }}>
           <Swirl color="#ffffff" opacity={0.14} rotate={0}   scale={1.1}  x="55%"  y="-30%" delay={0} />
           <Swirl color="#ffffff" opacity={0.08} rotate={150} scale={0.65} x="-18%" y="30%"  delay={2} />
           <FloatingShape size={320} x="58%"  y="-18%" delay={0} color="#ffffff" blur={90} opacity={0.09} />

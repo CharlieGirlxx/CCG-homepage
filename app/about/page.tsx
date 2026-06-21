@@ -8,16 +8,32 @@ import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { ArrowRight, Heart, Users, Award, Shield, Star, CheckCircle2 } from 'lucide-react'
 
-const aboutData: Record<string, any> = {
+interface AboutConfig {
+  title: string
+  subtitle: string
+  heroImage: string
+  image2: string
+  image3: string
+  accent: string
+  accentLight: string
+  gradientCss: string
+  values: Array<{
+    icon: React.ComponentType<{ size?: number; className?: string }>
+    title: string
+    desc: string
+  }>
+}
+
+const aboutData: Record<string, AboutConfig> = {
   ndis: {
     title: 'About Carters Care\nNDIS Services',
     subtitle: 'Empowering participants to live their best lives with dignity, choice, and genuine support.',
     heroImage: '/assets/ndis-about-1.png',
     image2: '/assets/ndis-home-2.png',
     image3: '/assets/ndis-about-3.png',
-    accent: '#0d8a5d',
-    accentLight: '#f0fdf4',
-    gradientCss: 'linear-gradient(135deg, #0d8a5d, #14b87a)',
+    accent: '#d61f69',
+    accentLight: '#f8d7e6',
+    gradientCss: 'linear-gradient(135deg, #d61f69, #e84384)',
     values: [
       { icon: Heart, title: 'Dignity', desc: 'Every person deserves unconditional respect and recognition of their worth.' },
       { icon: Users, title: 'Choice', desc: 'Control should remain in the hands of those we serve, always.' },
@@ -33,9 +49,9 @@ const aboutData: Record<string, any> = {
     heroImage: '/assets/hero-aged-care.png',
     image2: '/assets/hero-aged-2.png',
     image3: '/assets/hero-aged-3.png',
-    accent: '#be123c',
-    accentLight: '#fff1f2',
-    gradientCss: 'linear-gradient(135deg, #be123c, #e11d6a)',
+    accent: '#16a34a',
+    accentLight: '#dcfce7',
+    gradientCss: 'linear-gradient(135deg, #16a34a, #22c55e)',
     values: [
       { icon: Heart, title: 'Dignity', desc: 'Honouring the life experiences and wisdom of every person in our care.' },
       { icon: Users, title: 'Family', desc: 'We treat every person like family, creating warmth and genuine connection.' },
@@ -51,9 +67,9 @@ const aboutData: Record<string, any> = {
     heroImage: '/assets/hero-partner.png',
     image2: '/assets/hero-platform-2.png',
     image3: '/assets/hero-platform-3.png',
-    accent: '#2563eb',
+    accent: '#3b82f6',
     accentLight: '#eff6ff',
-    gradientCss: 'linear-gradient(135deg, #2563eb, #06b6d4)',
+    gradientCss: 'linear-gradient(135deg, #3b82f6, #60a5fa)',
     values: [
       { icon: Heart, title: 'Built for Care', desc: 'Designed from the ground up for NDIS and aged care professionals.' },
       { icon: Users, title: 'Collaborative', desc: 'Co-created with hundreds of providers to solve real problems.' },
@@ -72,7 +88,17 @@ const fadeUp = {
   transition: { duration: 0.65, ease: [0.22, 1, 0.36, 1] as const },
 }
 
-function FloatingShape({ size, x, y, delay, color, blur = 80, opacity = 0.15 }: any) {
+interface FloatingShapeProps {
+  size: number
+  x: string
+  y: string
+  delay: number
+  color: string
+  blur?: number
+  opacity?: number
+}
+
+function FloatingShape({ size, x, y, delay, color, blur = 80, opacity = 0.15 }: FloatingShapeProps) {
   return (
     <motion.div
       animate={{ y: [0, -20, 0], x: [0, 10, 0] }}
@@ -207,7 +233,7 @@ export default function About() {
             </motion.div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {data.values.map((v: any, i: number) => {
+              {data.values.map((v, i: number) => {
                 const Icon = v.icon
                 return (
                   <motion.div

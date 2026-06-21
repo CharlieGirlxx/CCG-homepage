@@ -6,13 +6,13 @@ import { useSkin } from '@/components/skin-provider'
 import { Phone, Mail, MapPin, ChevronRight } from 'lucide-react'
 
 const skinConfig: Record<string, { accent: string; bg: string }> = {
-  ndis: { accent: '#0d8a5d', bg: '#f0fdf4' },
-  'aged-care': { accent: '#be123c', bg: '#fff1f2' },
-  'service-provider': { accent: '#2563eb', bg: '#eff6ff' },
+  ndis: { accent: '#d61f69', bg: '#f8d7e6' },
+  'aged-care': { accent: '#16a34a', bg: '#dcfce7' },
+  'service-provider': { accent: '#3b82f6', bg: '#eff6ff' },
 }
 
 export function Footer() {
-  const { skin } = useSkin()
+  const { skin, setSkin } = useSkin()
   const config = skin ? skinConfig[skin] : null
 
   return (
@@ -46,24 +46,17 @@ export function Footer() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
           {/* Brand */}
-          <div className="md:col-span-2">
-            {/* Logo: colourful pinwheel icon cropped from full logo + white wordmark text */}
-            <div className="flex items-center gap-3 mb-5">
-              <div className="w-12 h-12 rounded-xl overflow-hidden shrink-0" style={{ background: '#0f0f14' }}>
-                <Image
-                  src="/assets/carters-logo.png"
-                  alt=""
-                  aria-hidden="true"
-                  width={100}
-                  height={56}
-                  className="h-12 w-auto max-w-none -translate-x-1"
-                  style={{ marginLeft: '-4px' }}
-                />
-              </div>
-              <div className="leading-none">
-                <span className="block text-xl font-extrabold text-white tracking-tight">carters</span>
-                <span className="block text-xs font-semibold text-white/60 tracking-widest uppercase mt-0.5">care group</span>
-              </div>
+          <section className="md:col-span-2" aria-labelledby="brand-title">
+            {/* Logo: Full Carters Care Group logo */}
+            <div className="mb-5">
+              <Image
+                src="/assets/carters-logo.png"
+                alt="Carters Care Group logo"
+                width={140}
+                height={53}
+                className="h-10 w-auto"
+                id="brand-title"
+              />
             </div>
             <p className="text-gray-400 text-sm leading-relaxed max-w-xs">
               Your family in disability and aged care services. We treat every client with the love and respect they deserve.
@@ -82,11 +75,11 @@ export function Footer() {
                 </span>
               ))}
             </div>
-          </div>
+          </section>
 
           {/* Contact */}
-          <div>
-            <h4 className="font-bold mb-5 text-xs uppercase tracking-widest text-gray-500">
+          <section aria-labelledby="contact-title">
+            <h4 className="font-bold mb-5 text-xs uppercase tracking-widest text-gray-500" id="contact-title">
               Contact
             </h4>
             <div className="space-y-3 text-sm text-gray-400">
@@ -103,11 +96,11 @@ export function Footer() {
                 <span>PO Box 1118, Osborne Park, WA 6916</span>
               </div>
             </div>
-          </div>
+          </section>
 
           {/* Quick Links */}
-          <div>
-            <h4 className="font-bold mb-5 text-xs uppercase tracking-widest text-gray-500">
+          <section aria-labelledby="nav-title">
+            <h4 className="font-bold mb-5 text-xs uppercase tracking-widest text-gray-500" id="nav-title">
               Navigate
             </h4>
             <div className="space-y-2 text-sm text-gray-400">
@@ -127,16 +120,32 @@ export function Footer() {
                 </Link>
               ))}
             </div>
-          </div>
+          </section>
         </div>
 
-        <div className="border-t border-white/10 mt-12 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-xs text-gray-600">
-            &copy; {new Date().getFullYear()} Carters Care Group. All rights reserved.
-          </p>
-          <p className="text-xs text-gray-700">
-            ABN: Your ABN here · NDIS Provider Registration
-          </p>
+        <div className="border-t border-white/10 mt-12 pt-8">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-6 md:gap-4">
+            <p className="text-xs text-gray-600">
+              &copy; {new Date().getFullYear()} Carters Care Group. All rights reserved.
+            </p>
+            {config && (
+              <button
+                onClick={() => {
+                  setSkin(null)
+                  localStorage.removeItem('carters-skin')
+                }}
+                aria-label="Switch between NDIS, Aged Care, and Service Provider portals"
+                className="text-xs font-semibold px-4 py-2 rounded-full border-2 transition-all duration-200 hover:opacity-80"
+                style={{
+                  borderColor: config.accent,
+                  color: config.accent,
+                  background: 'transparent',
+                }}
+              >
+                Switch Portal
+              </button>
+            )}
+          </div>
         </div>
       </div>
     </footer>
