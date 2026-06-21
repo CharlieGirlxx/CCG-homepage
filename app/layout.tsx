@@ -2,6 +2,7 @@ import { Analytics } from '@vercel/analytics/next'
 import type { Metadata, Viewport } from 'next'
 import { Geist, Geist_Mono } from 'next/font/google'
 import { SkinProvider } from '@/components/skin-provider'
+import { ScrollToTop } from '@/components/scroll-to-top'
 import './globals.css'
 
 const geistSans = Geist({ variable: '--font-geist-sans', subsets: ['latin'] })
@@ -48,6 +49,7 @@ export default function RootLayout({
     <html lang="en" className={`${geistSans.variable} ${geistMono.variable}`}>
       <body className="font-sans antialiased">
         <SkinProvider>
+          <ScrollToTop />
           {children}
         </SkinProvider>
         {process.env.NODE_ENV === 'production' && <Analytics />}

@@ -13,7 +13,7 @@ const aboutData: Record<string, any> = {
     title: 'About Carters Care\nNDIS Services',
     subtitle: 'Empowering participants to live their best lives with dignity, choice, and genuine support.',
     heroImage: '/assets/ndis-about-1.png',
-    image2: '/assets/ndis-about-2.png',
+    image2: '/assets/ndis-home-2.png',
     image3: '/assets/ndis-about-3.png',
     accent: '#0d8a5d',
     accentLight: '#f0fdf4',

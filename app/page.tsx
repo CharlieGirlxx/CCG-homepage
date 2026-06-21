@@ -337,9 +337,13 @@ export default function Home() {
                       </div>
                       <h3 className="text-xl font-bold text-gray-900 mb-3 relative z-10">{s.title}</h3>
                       <p className="text-gray-500 text-sm leading-relaxed relative z-10">{s.desc}</p>
-                      <div className="mt-6 flex items-center gap-2 text-sm font-bold transition-all duration-300 group-hover:gap-3 relative z-10" style={{ color: data.accent }}>
+                      <Link
+                        href="/services"
+                        className="mt-6 flex items-center gap-2 text-sm font-bold transition-all duration-300 group-hover:gap-3 relative z-10"
+                        style={{ color: data.accent }}
+                      >
                         Learn more <ArrowRight size={15} />
-                      </div>
+                      </Link>
                     </div>
                   </motion.div>
                 )
