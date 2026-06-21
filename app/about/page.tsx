@@ -67,9 +67,9 @@ const aboutData: Record<string, AboutConfig> = {
     heroImage: '/assets/hero-partner.png',
     image2: '/assets/hero-platform-2.png',
     image3: '/assets/hero-platform-3.png',
-    accent: '#2563eb',
-    accentLight: '#eff6ff',
-    gradientCss: 'linear-gradient(135deg, #2563eb, #06b6d4)',
+    accent: '#93c5fd',
+    accentLight: '#dbeafe',
+    gradientCss: 'linear-gradient(135deg, #93c5fd, #bfdbfe)',
     values: [
       { icon: Heart, title: 'Built for Care', desc: 'Designed from the ground up for NDIS and aged care professionals.' },
       { icon: Users, title: 'Collaborative', desc: 'Co-created with hundreds of providers to solve real problems.' },

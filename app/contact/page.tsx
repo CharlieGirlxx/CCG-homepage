@@ -22,9 +22,9 @@ const contactData: Record<string, any> = {
   },
   'service-provider': {
     heroImage: '/assets/contact-welcome.png',
-    accent: '#2563eb',
-    accentLight: '#eff6ff',
-    gradientCss: 'linear-gradient(135deg, #2563eb, #06b6d4)',
+    accent: '#93c5fd',
+    accentLight: '#dbeafe',
+    gradientCss: 'linear-gradient(135deg, #93c5fd, #bfdbfe)',
   },
 }
 

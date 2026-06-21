@@ -31,10 +31,10 @@ const skinConfig: Record<string, {
   },
   'service-provider': {
     label: 'Service Provider',
-    color: '#1d4ed8',
-    bg: '#eff6ff',
-    accent: '#2563eb',
-    gradient: 'linear-gradient(135deg, #2563eb, #06b6d4)',
+    color: '#60a5fa',
+    bg: '#dbeafe',
+    accent: '#93c5fd',
+    gradient: 'linear-gradient(135deg, #93c5fd, #bfdbfe)',
   },
 }
 

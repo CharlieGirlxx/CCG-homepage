@@ -100,11 +100,11 @@ const skinData: Record<string, SkinConfig> = {
     ],
     quote: "The Carters Care Platform was built by care providers, for care providers — everything you need to run your organisation, nothing you don't.",
     checks: ['NDIS Practice Standards Ready', 'Cloud-Based & Secure', 'Real-Time Rostering', 'Automated Compliance Reports'],
-    accent: '#1d4ed8',
-    accentLight: '#eff6ff',
-    gradientCss: 'linear-gradient(135deg, #2563eb, #06b6d4)',
-    overlayColor: '#2563eb',
-    marqueeBg: '#2563eb',
+    accent: '#93c5fd',
+    accentLight: '#dbeafe',
+    gradientCss: 'linear-gradient(135deg, #93c5fd, #bfdbfe)',
+    overlayColor: '#93c5fd',
+    marqueeBg: '#93c5fd',
   },
 }
 

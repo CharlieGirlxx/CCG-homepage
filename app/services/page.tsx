@@ -86,9 +86,9 @@ const servicesData: Record<string, ServicesConfig> = {
       { icon: Home, title: 'Billing & Claims', desc: 'Eliminate billing errors and accelerate cash flow with automated NDIS claim generation, aged care invoicing, payment tracking, and reconciliation.', detail: 'Billing in NDIS and aged care is complex — we make it simple. Our integrated billing module auto-generates claims from completed shifts, validates against NDIS pricing limits, submits to the NDIS portal, and tracks payment status. Fewer errors, faster payments, and complete financial visibility.' },
       { icon: Sparkles, title: 'Worker App', desc: 'Empower your frontline team with a purpose-built mobile app — shift details, client notes, progress records, timesheets, and incident reporting, all on the go.', detail: 'Our companion mobile app is designed for the realities of frontline care work. Support workers can view upcoming shifts, access client care notes, record progress and incidents, submit timesheets, and communicate with coordinators — all from their phone, with offline capability for remote areas.' },
     ],
-    accent: '#2563eb',
-    accentLight: '#eff6ff',
-    gradientCss: 'linear-gradient(135deg, #2563eb, #06b6d4)',
+    accent: '#93c5fd',
+    accentLight: '#dbeafe',
+    gradientCss: 'linear-gradient(135deg, #93c5fd, #bfdbfe)',
   },
 }
 
