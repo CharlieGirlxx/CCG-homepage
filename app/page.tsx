@@ -467,7 +467,7 @@ export default function Home() {
                   <span className="w-2 h-2 rounded-full" style={{ background: data.gradientCss }} />
                   <span className="text-xs font-bold text-gray-600 uppercase tracking-widest">Why Choose Us</span>
                 </div>
-                <h2 className="text-4xl md:text-5xl font-black text-gray-900 mb-6 leading-tight tracking-tight">
+                <h2 className="text-3xl md:text-4xl font-black text-gray-900 mb-6 leading-tight tracking-tight">
                   Care that puts<br />
                   <span style={{ color: data.accent }}>people first.</span>
                 </h2>
