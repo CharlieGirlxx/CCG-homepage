@@ -47,22 +47,16 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
           {/* Brand */}
           <section className="md:col-span-2" aria-labelledby="brand-title">
-            {/* Logo: colourful pinwheel icon cropped from full logo + white wordmark text */}
-            <div className="flex items-center gap-3 mb-5">
-              <div className="w-12 h-12 rounded-xl overflow-hidden shrink-0" style={{ background: '#0f0f14' }}>
-                <Image
-                  src="/assets/carters-logo.png"
-                  alt="Carters Care Group logo"
-                  width={100}
-                  height={56}
-                  className="h-12 w-auto max-w-none -translate-x-1"
-                  style={{ marginLeft: '-4px' }}
-                />
-              </div>
-              <div className="leading-none">
-                <span className="block text-xl font-extrabold text-white tracking-tight" id="brand-title">carters</span>
-                <span className="block text-xs font-semibold text-white/60 tracking-widest uppercase mt-0.5">care group</span>
-              </div>
+            {/* Logo: Full Carters Care Group logo */}
+            <div className="mb-5">
+              <Image
+                src="/assets/carters-logo.png"
+                alt="Carters Care Group logo"
+                width={180}
+                height={68}
+                className="h-auto w-auto"
+                id="brand-title"
+              />
             </div>
             <p className="text-gray-400 text-sm leading-relaxed max-w-xs">
               Your family in disability and aged care services. We treat every client with the love and respect they deserve.

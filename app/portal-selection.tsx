@@ -12,8 +12,8 @@ const portals = [
     tag: 'SENIORS & FAMILIES',
     description: 'Compassionate aged care that respects your dignity, choices, and independence.',
     icon: Shield,
-    accent: '#e11d6a',
-    iconBg: 'linear-gradient(135deg, #f43f8e, #e11d6a)',
+    accent: '#16a34a',
+    iconBg: 'linear-gradient(135deg, #22c55e, #16a34a)',
   },
   {
     id: 'ndis',
@@ -21,8 +21,8 @@ const portals = [
     tag: 'PARTICIPANTS & FAMILIES',
     description: 'Personalised disability support tailored to your NDIS plan and goals.',
     icon: Heart,
-    accent: '#0d9488',
-    iconBg: 'linear-gradient(135deg, #14b87a, #0d9488)',
+    accent: '#d61f69',
+    iconBg: 'linear-gradient(135deg, #e84384, #d61f69)',
   },
   {
     id: 'service-provider',
@@ -30,8 +30,8 @@ const portals = [
     tag: 'FOR SERVICE PROVIDERS',
     description: 'Access our purpose-built platform for managing participants, care plans, scheduling, and compliance reporting in one place.',
     icon: LayoutDashboard,
-    accent: '#2563eb',
-    iconBg: 'linear-gradient(135deg, #3b82f6, #2563eb)',
+    accent: '#3b82f6',
+    iconBg: 'linear-gradient(135deg, #60a5fa, #3b82f6)',
   },
 ]
 
@@ -88,18 +88,18 @@ export function PortalSelection() {
     <div className="min-h-screen relative overflow-hidden flex flex-col items-center justify-center bg-white px-6 py-16">
 
       {/* ── Background blobs ── */}
-      <Blob color="#f43f8e" size={700} x="2%"   y="10%"  blur={140} opacity={0.10} />
-      <Blob color="#a855f7" size={500} x="0%"   y="5%"   blur={100} opacity={0.07} />
-      <Blob color="#14b87a" size={500} x="100%" y="8%"   blur={120} opacity={0.08} />
-      <Blob color="#f59e0b" size={600} x="100%" y="95%"  blur={130} opacity={0.08} />
-      <Blob color="#2563eb" size={400} x="50%"  y="100%" blur={110} opacity={0.07} />
-      <Blob color="#e11d6a" size={300} x="95%"  y="50%"  blur={90}  opacity={0.06} />
+      <Blob color="#d61f69" size={700} x="2%"   y="10%"  blur={140} opacity={0.10} />
+      <Blob color="#16a34a" size={500} x="0%"   y="5%"   blur={100} opacity={0.07} />
+      <Blob color="#22c55e" size={500} x="100%" y="8%"   blur={120} opacity={0.08} />
+      <Blob color="#3b82f6" size={600} x="100%" y="95%"  blur={130} opacity={0.08} />
+      <Blob color="#60a5fa" size={400} x="50%"  y="100%" blur={110} opacity={0.07} />
+      <Blob color="#d61f69" size={300} x="95%"  y="50%"  blur={90}  opacity={0.06} />
 
       {/* ── Transparent swirls ── */}
-      <Swirl color="#e11d6a" opacity={0.07} size={560} x="3%"   y="15%"  rotate={0}   delay={0} />
-      <Swirl color="#14b87a" opacity={0.06} size={460} x="97%"  y="10%"  rotate={120} delay={2} />
-      <Swirl color="#2563eb" opacity={0.05} size={380} x="92%"  y="88%"  rotate={240} delay={4} />
-      <Swirl color="#a855f7" opacity={0.05} size={320} x="8%"   y="90%"  rotate={60}  delay={1} />
+      <Swirl color="#d61f69" opacity={0.07} size={560} x="3%"   y="15%"  rotate={0}   delay={0} />
+      <Swirl color="#16a34a" opacity={0.06} size={460} x="97%"  y="10%"  rotate={120} delay={2} />
+      <Swirl color="#3b82f6" opacity={0.05} size={380} x="92%"  y="88%"  rotate={240} delay={4} />
+      <Swirl color="#22c55e" opacity={0.05} size={320} x="8%"   y="90%"  rotate={60}  delay={1} />
 
       {/* ── Content ── */}
       <div className="relative z-10 w-full max-w-5xl">
@@ -133,7 +133,7 @@ export function PortalSelection() {
             How can we{' '}
             <span
               className="bg-clip-text text-transparent"
-              style={{ backgroundImage: 'linear-gradient(90deg, #e11d6a 0%, #a855f7 50%, #f59e0b 100%)' }}
+              style={{ backgroundImage: 'linear-gradient(90deg, #d61f69 0%, #16a34a 50%, #3b82f6 100%)' }}
             >
               help you
             </span>{' '}
