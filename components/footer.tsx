@@ -129,13 +129,27 @@ export function Footer() {
           </section>
         </div>
 
-        <div className="border-t border-white/10 mt-12 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-xs text-gray-600">
-            &copy; {new Date().getFullYear()} Carters Care Group. All rights reserved.
-          </p>
-          <p className="text-xs text-gray-700">
-            ABN: Your ABN here · NDIS Provider Registration
-          </p>
+        <div className="border-t border-white/10 mt-12 pt-8">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-6 md:gap-4">
+            <p className="text-xs text-gray-600">
+              &copy; {new Date().getFullYear()} Carters Care Group. All rights reserved.
+            </p>
+            <a
+              href="https://www.ndiscommission.gov.au/provider-registration/carters-care-group-ccg-pty-ltd"
+              target="_blank"
+              rel="noopener noreferrer"
+              title="Verify Carters Care Group NDIS Provider Registration"
+              className="transition-transform hover:scale-105"
+            >
+              <Image
+                src="/assets/ndis-registered-badge.png"
+                alt="Registered NDIS Provider - Carters Care Group"
+                width={200}
+                height={120}
+                className="h-20 w-auto"
+              />
+            </a>
+          </div>
         </div>
       </div>
     </footer>

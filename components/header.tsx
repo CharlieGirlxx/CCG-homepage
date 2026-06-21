@@ -123,7 +123,10 @@ export function Header() {
 
             {config && (
               <button
-                onClick={() => setSkin(null)}
+                onClick={() => {
+                  setSkin(null)
+                  localStorage.removeItem('carters-skin')
+                }}
                 className="ml-4 text-xs font-semibold px-3.5 py-1.5 rounded-full border-2 transition-all duration-200 hover:opacity-80"
                 style={{
                   borderColor: config.accent,
