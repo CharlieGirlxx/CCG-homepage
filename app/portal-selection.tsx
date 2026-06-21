@@ -114,8 +114,8 @@ export function PortalSelection() {
           <Image
             src="/assets/carters-logo.png"
             alt="Carters Care Group"
-            width={200}
-            height={76}
+            width={320}
+            height={121}
             priority
             className="drop-shadow-sm"
           />

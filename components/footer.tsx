@@ -54,7 +54,7 @@ export function Footer() {
                 alt="Carters Care Group logo"
                 width={140}
                 height={53}
-                className="h-auto w-auto"
+                className="h-10 w-auto"
                 id="brand-title"
               />
             </div>
