@@ -12,7 +12,7 @@ const skinConfig: Record<string, { accent: string; bg: string }> = {
 }
 
 export function Footer() {
-  const { skin } = useSkin()
+  const { skin, setSkin } = useSkin()
   const config = skin ? skinConfig[skin] : null
 
   return (
@@ -134,21 +134,22 @@ export function Footer() {
             <p className="text-xs text-gray-600">
               &copy; {new Date().getFullYear()} Carters Care Group. All rights reserved.
             </p>
-            <a
-              href="https://www.ndiscommission.gov.au/provider-registration/carters-care-group-ccg-pty-ltd"
-              target="_blank"
-              rel="noopener noreferrer"
-              title="Verify Carters Care Group NDIS Provider Registration"
-              className="transition-transform hover:scale-105"
-            >
-              <Image
-                src="/assets/ndis-registered-badge.png"
-                alt="Registered NDIS Provider - Carters Care Group"
-                width={200}
-                height={120}
-                className="h-20 w-auto"
-              />
-            </a>
+            {config && (
+              <button
+                onClick={() => {
+                  setSkin(null)
+                  localStorage.removeItem('carters-skin')
+                }}
+                className="text-xs font-semibold px-4 py-2 rounded-full border-2 transition-all duration-200 hover:opacity-80"
+                style={{
+                  borderColor: config.accent,
+                  color: config.accent,
+                  background: 'transparent',
+                }}
+              >
+                Switch Portal
+              </button>
+            )}
           </div>
         </div>
       </div>

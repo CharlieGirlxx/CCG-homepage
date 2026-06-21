@@ -85,17 +85,36 @@ export function Header() {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-18 py-3">
-          {/* Logo */}
-          <Link href="/" className="flex items-center gap-3 group">
-            <Image
-              src="/assets/carters-logo.png"
-              alt="Carters Care"
-              width={140}
-              height={60}
-              className="transition-transform duration-300 group-hover:scale-105"
-              priority
-            />
-          </Link>
+          {/* Logo + NDIS Badge */}
+          <div className="flex items-center gap-6">
+            <Link href="/" className="flex items-center gap-3 group">
+              <Image
+                src="/assets/carters-logo.png"
+                alt="Carters Care"
+                width={140}
+                height={60}
+                className="transition-transform duration-300 group-hover:scale-105"
+                priority
+              />
+            </Link>
+
+            {/* NDIS Badge */}
+            <a
+              href="https://www.ndiscommission.gov.au/provider-registration/carters-care-group-ccg-pty-ltd"
+              target="_blank"
+              rel="noopener noreferrer"
+              title="Verify Carters Care Group NDIS Provider Registration"
+              className="hidden lg:block transition-transform hover:scale-105"
+            >
+              <Image
+                src="/assets/ndis-registered-badge.png"
+                alt="Registered NDIS Provider - Carters Care Group"
+                width={120}
+                height={72}
+                className="h-16 w-auto"
+              />
+            </a>
+          </div>
 
           {/* Desktop Nav */}
           <nav className="hidden md:flex items-center gap-1" aria-label="Main navigation">
@@ -120,23 +139,6 @@ export function Header() {
                 </Link>
               )
             })}
-
-            {config && (
-              <button
-                onClick={() => {
-                  setSkin(null)
-                  localStorage.removeItem('carters-skin')
-                }}
-                className="ml-4 text-xs font-semibold px-3.5 py-1.5 rounded-full border-2 transition-all duration-200 hover:opacity-80"
-                style={{
-                  borderColor: config.accent,
-                  color: config.accent,
-                  background: 'transparent',
-                }}
-              >
-                Switch Portal
-              </button>
-            )}
 
             <a
               href="tel:1300002723"
