@@ -229,7 +229,7 @@ export default function Home() {
                   <span className="text-xs font-bold text-white/85 uppercase tracking-widest">Welcome to Carters Care Group</span>
                 </motion.div>
 
-                <h1 className="text-5xl md:text-7xl lg:text-8xl font-black text-white mb-7 leading-[0.95] tracking-tight whitespace-pre-line">
+                <h1 className="text-4xl font-black text-white mb-7 leading-[0.95] tracking-tight whitespace-pre-line">
                   {data.heroTitle}
                 </h1>
                 <p className="text-xl text-white/75 mb-10 leading-relaxed max-w-xl">
