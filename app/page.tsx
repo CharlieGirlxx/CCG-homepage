@@ -36,12 +36,6 @@ const skinData: Record<string, any> = {
       { title: 'Community Participation', desc: 'Join social groups, activities, and events that build confidence and connection.', icon: HandHeart },
       { title: 'Life Skills Development', desc: 'Learn practical skills from cooking to budgeting, empowering you for the future.', icon: Star },
     ],
-    stats: [
-      { value: '500+', label: 'Participants Supported' },
-      { value: '10+', label: 'Years Experience' },
-      { value: '98%', label: 'Satisfaction Rate' },
-      { value: '24/7', label: 'On-Call Support' },
-    ],
     quote: 'Our NDIS support workers are passionate about helping participants live their best lives. We listen, we care, we deliver.',
     checks: ['NDIS Registered Provider', 'Personalised Support Plans', 'Experienced Care Workers', '24/7 On-Call Support'],
     accent: '#0b7a52',
@@ -62,12 +56,6 @@ const skinData: Record<string, any> = {
       { title: 'Respite Care', desc: 'Short-term relief for carers and a refreshing change of scene for loved ones.', icon: HandHeart },
       { title: 'Residential Care', desc: 'Intimate residential homes with personalised care and a warm community atmosphere.', icon: Star },
     ],
-    stats: [
-      { value: '300+', label: 'Clients in Our Care' },
-      { value: '15+', label: 'Years Experience' },
-      { value: '99%', label: 'Family Satisfaction' },
-      { value: '24/7', label: 'Care Available' },
-    ],
     quote: 'We treat every person in our care like family, because everyone deserves to feel valued, respected, and at home.',
     checks: ['Government Approved Provider', 'Culturally Sensitive Care', 'Qualified & Compassionate Staff', 'Regular Family Updates'],
     accent: '#9b1239',
@@ -87,12 +75,6 @@ const skinData: Record<string, any> = {
       { title: 'Client Management', desc: 'Centralise all client records, NDIS plans, support goals, and progress notes in one secure hub.', icon: Heart },
       { title: 'Roster & Scheduling', desc: 'Build and manage staff rosters, match workers to participants, and handle shift changes in real-time.', icon: HandHeart },
       { title: 'Compliance & Reporting', desc: 'Auto-generate NDIS and aged care compliance reports, incident logs, and audit-ready documentation.', icon: Star },
-    ],
-    stats: [
-      { value: '200+', label: 'Organisations Using' },
-      { value: '50k+', label: 'Shifts Managed' },
-      { value: '99.9%', label: 'Uptime' },
-      { value: '5min', label: 'Average Setup' },
     ],
     quote: "The Carters Care Platform was built by care providers, for care providers — everything you need to run your organisation, nothing you don't.",
     checks: ['NDIS Practice Standards Ready', 'Cloud-Based & Secure', 'Real-Time Rostering', 'Automated Compliance Reports'],
@@ -301,26 +283,10 @@ export default function Home() {
           </motion.div>
         </section>
 
-        {/* ══════════════════════════════════
+        {/* ═════════════════════���════════════
             MARQUEE strip
         ══════════════════════════════════ */}
         <Marquee color={data.marqueeBg} items={marqueeItems} />
-
-        {/* ══════════════════════════════════════════
-            STATS BAR — large numbers side by side
-        ══════════════════════════════════════════ */}
-        <section className="py-16 bg-white border-b border-gray-100">
-          <div className="max-w-7xl mx-auto px-6 lg:px-12">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-              {data.stats.map((s: any, i: number) => (
-                <motion.div key={s.label} {...stagger(i)} className="text-center">
-                  <div className="text-5xl md:text-6xl font-black mb-1" style={{ color: data.accent }}>{s.value}</div>
-                  <div className="text-sm font-semibold text-gray-500 uppercase tracking-wide">{s.label}</div>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </section>
 
         {/* ══════════════════════════════════════════
             SERVICES — 3-col card grid with large images
@@ -507,19 +473,35 @@ export default function Home() {
                 >
                   <img src={data.heroImage} alt="" aria-hidden="true" className="w-full h-full object-cover" />
                 </motion.div>
-                <motion.div
+                <motion.a
+                  href="https://www.ndiscommission.gov.au/provider-registration/carters-care-group-ccg-pty-ltd"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   initial={{ opacity: 0, scale: 0.95 }}
                   whileInView={{ opacity: 1, scale: 1 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.7, delay: 0.2 }}
-                  className="flex-1 rounded-3xl flex items-center justify-center text-white text-center p-6"
+                  whileHover={{ scale: 1.02 }}
+                  className="flex-1 rounded-3xl flex flex-col items-center justify-center text-center p-8 gap-5 group"
                   style={{ background: data.gradientCss }}
                 >
-                  <div>
-                    <div className="text-4xl font-black mb-1">{data.stats[0].value}</div>
-                    <div className="text-white/80 text-sm font-medium">{data.stats[0].label}</div>
+                  {/* NDIS wordmark */}
+                  <div className="bg-white rounded-2xl px-7 py-4 shadow-lg">
+                    <svg viewBox="0 0 160 52" className="h-10 w-auto" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="NDIS logo">
+                      <rect width="160" height="52" rx="4" fill="white"/>
+                      <text x="14" y="38" fontFamily="Arial, sans-serif" fontWeight="900" fontSize="36" fill="#003087" letterSpacing="1">NDIS</text>
+                      <rect x="110" y="10" width="38" height="32" rx="3" fill="#003087"/>
+                      <text x="114" y="31" fontFamily="Arial, sans-serif" fontWeight="700" fontSize="11" fill="white">REGISTERED</text>
+                    </svg>
                   </div>
-                </motion.div>
+                  <div>
+                    <p className="text-white font-bold text-base leading-snug">NDIS Registered Provider</p>
+                    <p className="text-white/70 text-xs mt-1 flex items-center justify-center gap-1 group-hover:text-white/90 transition-colors">
+                      Verify registration
+                      <ArrowRight size={11} />
+                    </p>
+                  </div>
+                </motion.a>
               </div>
             </div>
           </div>
