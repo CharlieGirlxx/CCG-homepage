@@ -1,7 +1,6 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import Image from 'next/image'
 import { motion, AnimatePresence } from 'framer-motion'
 
 interface ImageCarouselProps {
@@ -37,18 +36,18 @@ export function ImageCarousel({
           transition={{ duration: 0.8 }}
           className="absolute inset-0"
         >
-          <Image
+          <img
             src={images[current]}
             alt={`Carousel image ${current + 1}`}
-            fill
-            className="object-cover"
-            priority={current === 0}
+            className="w-full h-full object-cover"
+            decoding="async"
+            loading="lazy"
           />
         </motion.div>
       </AnimatePresence>
       
       {overlay && (
-        <div className="absolute inset-0">
+        <div className="absolute inset-0 pointer-events-none">
           {overlay}
         </div>
       )}
