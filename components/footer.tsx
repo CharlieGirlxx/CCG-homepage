@@ -52,8 +52,8 @@ export function Footer() {
               <Image
                 src="/assets/carters-logo.png"
                 alt="Carters Care Group logo"
-                width={180}
-                height={68}
+                width={120}
+                height={45}
                 className="h-auto w-auto"
                 id="brand-title"
               />

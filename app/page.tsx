@@ -344,7 +344,7 @@ export default function Home() {
         {/* ══════════════════════════════════════════
             SERVICES — 3-col card grid with large images
         ══════════════════════════════════════════ */}
-        <section className="py-28 relative overflow-hidden" style={{ background: data.accentLight }}>
+        <section className="py-20 relative overflow-hidden" style={{ background: data.accentLight }}>
           <Swirl color={data.overlayColor} opacity={0.2} rotate={30}  scale={1.1}  x="-22%" y="-10%" delay={1} />
           <Swirl color={data.overlayColor} opacity={0.13} rotate={210} scale={0.7}  x="72%"  y="45%"  delay={3} />
           <FloatingShape size={400} x="-8%"  y="15%"  delay={1} color={data.overlayColor} blur={110} opacity={0.08} />
@@ -422,7 +422,7 @@ export default function Home() {
             SPLIT — full-bleed photo left, rich text right
         ══════════════════════════════════════════ */}
         <section className="relative overflow-hidden bg-white">
-          <div className="grid grid-cols-1 lg:grid-cols-2 min-h-[600px]">
+          <div className="grid grid-cols-1 lg:grid-cols-2 min-h-[500px]">
             {/* Photo side */}
             <motion.div
               initial={{ opacity: 0, x: -60 }}
@@ -430,7 +430,7 @@ export default function Home() {
               viewport={{ once: true }}
               transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
               className="relative overflow-hidden"
-              style={{ minHeight: 400 }}
+              style={{ minHeight: 350 }}
             >
               <img src={data.splitImage} alt="" aria-hidden="true" className="absolute inset-0 w-full h-full object-cover" />
               {/* Gradient on right edge to blend into white */}
@@ -500,64 +500,12 @@ export default function Home() {
           </div>
         </section>
 
-        {/* ══════════════════════════════════════════
-            PHOTO BENTO GRID
-        ══════════════════════════════════════════ */}
-        <section className="py-6 px-4 lg:px-12 bg-white">
-          <div className="max-w-7xl mx-auto">
-            <div className="grid grid-cols-3 gap-4" style={{ height: 400 }}>
-              <motion.div
-                initial={{ opacity: 0, scale: 0.95 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.7 }}
-                className="col-span-2 rounded-3xl overflow-hidden relative"
-              >
-                <img src={data.aboutImage} alt="" aria-hidden="true" className="w-full h-full object-cover" />
-                <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, rgba(0,0,0,0.4) 0%, transparent 60%)' }} />
-              </motion.div>
-              <div className="flex flex-col gap-4">
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.95 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.7, delay: 0.1 }}
-                  className="flex-1 rounded-3xl overflow-hidden"
-                >
-                  <img src={data.heroImage} alt="" aria-hidden="true" className="w-full h-full object-cover" />
-                </motion.div>
-                <motion.a
-                  href="https://www.ndiscommission.gov.au/provider-registration/carters-care-group-ccg-pty-ltd"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  initial={{ opacity: 0, scale: 0.95 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.7, delay: 0.2 }}
-                  whileHover={{ scale: 1.02 }}
-                  className="flex-1 rounded-3xl flex flex-col items-center justify-center text-center p-8 gap-4 group bg-white border border-gray-100"
-                  style={{ boxShadow: '0 4px 24px rgba(0,0,0,0.06)' }}
-                >
-                  {/* Official I ♥ NDIS Registered Provider logo */}
-                  <img
-                    src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/I%20heart%20NDIS%20Registered%20provider%20logo%20-%20Short-7sCn71WpjhopOXvDj4TtciKVEkNNNV.png"
-                    alt="I love NDIS — Registered NDIS Provider"
-                    className="h-24 w-auto object-contain"
-                  />
-                  <p className="text-gray-500 text-xs flex items-center justify-center gap-1 group-hover:text-gray-700 transition-colors">
-                    Verify our registration
-                    <ArrowRight size={11} />
-                  </p>
-                </motion.a>
-              </div>
-            </div>
-          </div>
-        </section>
+
 
         {/* ══════════════════════════════════════════
             CTA — full-bleed gradient with shapes
         ══════════════════════════════════════════ */}
-        <section className="relative overflow-hidden py-28" style={{ background: data.gradientCss }}>
+        <section className="relative overflow-hidden py-20" style={{ background: data.gradientCss }}>
           <Swirl color="#ffffff" opacity={0.14} rotate={0}   scale={1.1}  x="55%"  y="-30%" delay={0} />
           <Swirl color="#ffffff" opacity={0.08} rotate={150} scale={0.65} x="-18%" y="30%"  delay={2} />
           <FloatingShape size={320} x="58%"  y="-18%" delay={0} color="#ffffff" blur={90} opacity={0.09} />
