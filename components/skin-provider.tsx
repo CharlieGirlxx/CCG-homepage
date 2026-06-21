@@ -22,7 +22,7 @@ export function SkinProvider({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     const saved = localStorage.getItem('carters-skin') as Skin
-    setSkin(saved || 'ndis')
+    setSkin(saved || null)
     setMounted(true)
   }, [])
 
