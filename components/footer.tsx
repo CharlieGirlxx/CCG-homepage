@@ -6,7 +6,7 @@ import { useSkin } from '@/components/skin-provider'
 import { Phone, Mail, MapPin, ChevronRight } from 'lucide-react'
 
 const skinConfig: Record<string, { accent: string; bg: string }> = {
-  ndis: { accent: '#ec4899', bg: '#fce7f3' },
+  ndis: { accent: '#d61f69', bg: '#f8d7e6' },
   'aged-care': { accent: '#16a34a', bg: '#dcfce7' },
   'service-provider': { accent: '#3b82f6', bg: '#eff6ff' },
 }

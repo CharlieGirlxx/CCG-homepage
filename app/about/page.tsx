@@ -31,9 +31,9 @@ const aboutData: Record<string, AboutConfig> = {
     heroImage: '/assets/ndis-about-1.png',
     image2: '/assets/ndis-home-2.png',
     image3: '/assets/ndis-about-3.png',
-    accent: '#ec4899',
-    accentLight: '#fce7f3',
-    gradientCss: 'linear-gradient(135deg, #ec4899, #f472b6)',
+    accent: '#d61f69',
+    accentLight: '#f8d7e6',
+    gradientCss: 'linear-gradient(135deg, #d61f69, #e84384)',
     values: [
       { icon: Heart, title: 'Dignity', desc: 'Every person deserves unconditional respect and recognition of their worth.' },
       { icon: Users, title: 'Choice', desc: 'Control should remain in the hands of those we serve, always.' },

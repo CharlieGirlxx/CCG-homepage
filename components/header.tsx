@@ -17,10 +17,10 @@ const skinConfig: Record<string, {
 }> = {
   ndis: {
     label: 'NDIS',
-    color: '#be123c',
-    bg: '#fce7f3',
-    accent: '#ec4899',
-    gradient: 'linear-gradient(135deg, #ec4899, #f472b6)',
+    color: '#a01650',
+    bg: '#f8d7e6',
+    accent: '#d61f69',
+    gradient: 'linear-gradient(135deg, #d61f69, #e84384)',
   },
   'aged-care': {
     label: 'Aged Care',

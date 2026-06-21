@@ -52,9 +52,9 @@ const servicesData: Record<string, ServicesConfig> = {
       { icon: Brain, title: 'Developmental Life Skills', desc: 'Build confidence and capability with programs tailored to your goals — from cooking and budgeting to communication and personal organisation.', detail: 'Developing life skills is a journey, and we are here every step of the way. Our programs are customised to your individual goals and learning style, covering practical skills like meal planning and financial management through to social skills and self-advocacy, all in a supportive, encouraging environment.' },
       { icon: Heart, title: 'Respite Care', desc: 'Quality short-term care for participants — and a well-deserved break for families and primary carers — without any disruption to your care routine.', detail: 'Caring for someone you love is deeply rewarding, but everyone needs time to recharge. Our respite services provide seamless, high-quality care for participants while giving carers the confidence to rest, knowing their loved one is in safe hands. We maintain existing routines and preferences to ensure continuity and comfort.' },
     ],
-    accent: '#ec4899',
-    accentLight: '#fce7f3',
-    gradientCss: 'linear-gradient(135deg, #ec4899, #f472b6)',
+    accent: '#d61f69',
+    accentLight: '#f8d7e6',
+    gradientCss: 'linear-gradient(135deg, #d61f69, #e84384)',
   },
   'aged-care': {
     title: 'Aged Care\nServices',
