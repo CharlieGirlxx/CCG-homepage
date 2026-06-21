@@ -3,7 +3,7 @@
 import { Header } from '@/components/header'
 import { Footer } from '@/components/footer'
 import { PageTransition } from '@/components/page-transition'
-import { ImageCarousel } from '@/components/image-carousel'
+
 import { useSkin } from '@/components/skin-provider'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
@@ -204,19 +204,20 @@ export default function Services() {
 
         {/* Hero */}
         <section className="relative overflow-hidden min-h-[65vh] flex items-center">
-          <ImageCarousel
-            images={data.images}
-            interval={7000}
+          {/* Static hero image */}
+          <img
+            src={data.images[0]}
+            alt=""
+            aria-hidden="true"
+            className="absolute inset-0 w-full h-full object-cover"
+          />
+          {/* Dark overlay */}
+          <div
             className="absolute inset-0"
-            overlay={
-              <div
-                className="absolute inset-0"
-                style={{
-                  background:
-                    'linear-gradient(120deg, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.45) 50%, rgba(0,0,0,0.15) 100%)',
-                }}
-              />
-            }
+            style={{
+              background:
+                'linear-gradient(120deg, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.45) 50%, rgba(0,0,0,0.15) 100%)',
+            }}
           />
 
           <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 md:py-32 w-full">

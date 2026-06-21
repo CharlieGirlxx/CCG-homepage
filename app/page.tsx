@@ -3,7 +3,7 @@
 import { Header } from '@/components/header'
 import { Footer } from '@/components/footer'
 import { PageTransition } from '@/components/page-transition'
-import { ImageCarousel } from '@/components/image-carousel'
+
 import { useSkin } from '@/components/skin-provider'
 import { PortalSelection } from './portal-selection'
 import Link from 'next/link'
@@ -171,19 +171,20 @@ export default function Home() {
 
         {/* ── Hero ── */}
         <section className="relative overflow-hidden" style={{ minHeight: '90vh', display: 'flex', alignItems: 'center' }}>
-          <ImageCarousel
-            images={data.heroImages}
-            interval={7000}
-            className="absolute inset-0 w-full h-full -z-10"
-            overlay={
-              <div
-                className="absolute inset-0 w-full h-full"
-                style={{
-                  background:
-                    'linear-gradient(120deg, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.45) 50%, rgba(0,0,0,0.2) 100%)',
-                }}
-              />
-            }
+          {/* Static hero image */}
+          <img
+            src={data.heroImages[0]}
+            alt=""
+            aria-hidden="true"
+            className="absolute inset-0 w-full h-full object-cover"
+          />
+          {/* Dark overlay */}
+          <div
+            className="absolute inset-0"
+            style={{
+              background:
+                'linear-gradient(120deg, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.45) 50%, rgba(0,0,0,0.2) 100%)',
+            }}
           />
 
           {/* Floating orbs */}
