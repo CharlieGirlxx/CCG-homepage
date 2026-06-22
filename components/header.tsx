@@ -113,14 +113,14 @@ export function Header() {
               target="_blank"
               rel="noopener noreferrer"
               title="Verify Carters Care Group NDIS Provider Registration"
-              className="hidden lg:block transition-transform hover:scale-105"
+              className="transition-transform hover:scale-105"
             >
               <Image
                 src="/assets/ndis-registered-badge.png"
                 alt="Registered NDIS Provider - Carters Care Group"
                 width={120}
                 height={72}
-                className="h-16 w-auto"
+                className="h-12 w-auto sm:h-14 lg:h-16"
               />
             </a>
           </div>
