@@ -1,4 +1,5 @@
 import { Analytics } from '@vercel/analytics/next'
+import { SpeedInsights } from '@vercel/speed-insights/next'
 import type { Metadata, Viewport } from 'next'
 import { Geist, Geist_Mono } from 'next/font/google'
 import { SkinProvider } from '@/components/skin-provider'
@@ -58,6 +59,7 @@ export default function RootLayout({
           </main>
         </SkinProvider>
         {process.env.NODE_ENV === 'production' && <Analytics />}
+        <SpeedInsights />
       </body>
     </html>
   )
