@@ -87,7 +87,16 @@ export function Header() {
         <div className="flex items-center justify-between h-18 py-3">
           {/* Logo + NDIS Badge */}
           <div className="flex items-center gap-6">
-            <Link href="/" className="flex items-center gap-3 group">
+            <button
+              onClick={() => {
+                setSkin(null)
+                localStorage.removeItem('carters-skin')
+                window.location.href = '/'
+              }}
+              className="flex items-center gap-3 group hover:opacity-80 transition-opacity"
+              aria-label="Go to home"
+              title="Go to portal selection"
+            >
               <Image
                 src="/assets/carters-logo.png"
                 alt="Carters Care"
@@ -96,7 +105,7 @@ export function Header() {
                 className="h-14 w-auto transition-transform duration-300 group-hover:scale-105"
                 priority
               />
-            </Link>
+            </button>
 
             {/* NDIS Badge */}
             <a
@@ -104,14 +113,14 @@ export function Header() {
               target="_blank"
               rel="noopener noreferrer"
               title="Verify Carters Care Group NDIS Provider Registration"
-              className="hidden lg:block transition-transform hover:scale-105"
+              className="transition-transform hover:scale-105"
             >
               <Image
                 src="/assets/ndis-registered-badge.png"
                 alt="Registered NDIS Provider - Carters Care Group"
                 width={120}
                 height={72}
-                className="h-16 w-auto"
+                className="h-12 w-auto sm:h-14 lg:h-16"
               />
             </a>
           </div>
@@ -140,13 +149,31 @@ export function Header() {
               )
             })}
 
+            {config && (
+              <button
+                onClick={() => {
+                  setSkin(null)
+                  localStorage.removeItem('carters-skin')
+                }}
+                aria-label="Switch between NDIS, Aged Care, and Service Provider portals"
+                className="mx-2 text-xs font-semibold px-3 py-1.5 rounded-full border-2 transition-all duration-200 hover:opacity-80"
+                style={{
+                  borderColor: config.accent,
+                  color: config.accent,
+                  background: 'transparent',
+                }}
+              >
+                Switch Portal
+              </button>
+            )}
+
             <a
               href="tel:1300002723"
               aria-label="Call us at 1300 00 27 23"
-              className="ml-2 flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-bold text-white transition-all duration-200 hover:scale-105 hover:shadow-md"
+              className="ml-2 flex items-center gap-1 px-3 py-2 rounded-xl text-xs sm:text-sm font-bold text-white transition-all duration-200 hover:scale-105 hover:shadow-md whitespace-nowrap"
               style={{ background: config?.gradient || 'linear-gradient(135deg, #9b188f, #c41e5a)' }}
             >
-              <Phone size={14} />
+              <Phone size={14} className="hidden sm:inline" />
               1300 00 27 23
             </a>
           </nav>
