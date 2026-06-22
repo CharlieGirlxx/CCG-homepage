@@ -170,10 +170,10 @@ export function Header() {
             <a
               href="tel:1300002723"
               aria-label="Call us at 1300 00 27 23"
-              className="ml-2 flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-bold text-white transition-all duration-200 hover:scale-105 hover:shadow-md"
+              className="ml-2 flex items-center gap-1 px-3 py-2 rounded-xl text-xs sm:text-sm font-bold text-white transition-all duration-200 hover:scale-105 hover:shadow-md whitespace-nowrap"
               style={{ background: config?.gradient || 'linear-gradient(135deg, #9b188f, #c41e5a)' }}
             >
-              <Phone size={14} />
+              <Phone size={14} className="hidden sm:inline" />
               1300 00 27 23
             </a>
           </nav>
