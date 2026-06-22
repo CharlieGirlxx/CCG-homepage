@@ -87,7 +87,16 @@ export function Header() {
         <div className="flex items-center justify-between h-18 py-3">
           {/* Logo + NDIS Badge */}
           <div className="flex items-center gap-6">
-            <Link href="/" className="flex items-center gap-3 group">
+            <button
+              onClick={() => {
+                setSkin(null)
+                localStorage.removeItem('carters-skin')
+                window.location.href = '/'
+              }}
+              className="flex items-center gap-3 group hover:opacity-80 transition-opacity"
+              aria-label="Go to home"
+              title="Go to portal selection"
+            >
               <Image
                 src="/assets/carters-logo.png"
                 alt="Carters Care"
@@ -96,7 +105,7 @@ export function Header() {
                 className="h-14 w-auto transition-transform duration-300 group-hover:scale-105"
                 priority
               />
-            </Link>
+            </button>
 
             {/* NDIS Badge */}
             <a
@@ -139,6 +148,24 @@ export function Header() {
                 </Link>
               )
             })}
+
+            {config && (
+              <button
+                onClick={() => {
+                  setSkin(null)
+                  localStorage.removeItem('carters-skin')
+                }}
+                aria-label="Switch between NDIS, Aged Care, and Service Provider portals"
+                className="mx-2 text-xs font-semibold px-3 py-1.5 rounded-full border-2 transition-all duration-200 hover:opacity-80"
+                style={{
+                  borderColor: config.accent,
+                  color: config.accent,
+                  background: 'transparent',
+                }}
+              >
+                Switch Portal
+              </button>
+            )}
 
             <a
               href="tel:1300002723"
