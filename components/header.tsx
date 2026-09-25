@@ -84,9 +84,9 @@ export function Header() {
       )}
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-18 py-3">
+        <div className="flex items-center justify-between min-h-16 py-2">
           {/* Logo + NDIS Badge */}
-          <div className="flex items-center gap-6">
+          <div className="flex min-w-0 items-center gap-3 sm:gap-4">
             <button
               onClick={() => {
                 setSkin(null)
@@ -102,7 +102,7 @@ export function Header() {
                 alt="Carters Care"
                 width={160}
                 height={60}
-                className="h-14 w-auto transition-transform duration-300 group-hover:scale-105"
+                className="h-10 w-auto sm:h-11 transition-transform duration-300 group-hover:scale-105"
                 priority
               />
             </button>
@@ -120,20 +120,20 @@ export function Header() {
                 alt="Registered NDIS Provider - Carters Care Group"
                 width={120}
                 height={72}
-                className="h-12 w-auto sm:h-14 lg:h-16"
+                className="h-10 w-auto sm:h-11 lg:h-12"
               />
             </a>
           </div>
 
           {/* Desktop Nav */}
-          <nav className="hidden md:flex items-center gap-1" aria-label="Main navigation">
+          <nav className="hidden md:flex items-center gap-0.5" aria-label="Main navigation">
             {navLinks.map((link) => {
               const active = pathname === link.href
               return (
                 <Link
                   key={link.href}
                   href={link.href}
-                  className="relative px-4 py-2 text-sm font-semibold tracking-wide transition-colors duration-200 rounded-lg hover:bg-black/5"
+                  className="relative px-3 py-2 text-sm font-semibold tracking-wide transition-colors duration-200 rounded-lg hover:bg-black/5"
                   style={{ color: active ? accentColor : '#444' }}
                 >
                   {link.label}
@@ -170,7 +170,7 @@ export function Header() {
             <a
               href="tel:1300002723"
               aria-label="Call us at 1300 00 27 23"
-              className="ml-2 flex items-center gap-1 px-3 py-2 rounded-xl text-xs sm:text-sm font-bold text-white transition-all duration-200 hover:scale-105 hover:shadow-md whitespace-nowrap"
+              className="ml-1 flex items-center gap-1.5 px-3 py-2 rounded-lg text-xs sm:text-sm font-bold text-white transition-all duration-200 hover:shadow-md whitespace-nowrap"
               style={{ background: config?.gradient || 'linear-gradient(135deg, #9b188f, #c41e5a)' }}
             >
               <Phone size={14} className="hidden sm:inline" />
